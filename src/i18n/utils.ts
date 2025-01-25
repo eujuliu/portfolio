@@ -1,9 +1,9 @@
-import en from '../i18n/translations/en.json';
-import ptBR from '../i18n/translations/pt-br.json';
+import { en } from '../i18n/translations/en.ts';
+import { ptBr } from '../i18n/translations/pt-br.ts';
 import type { AvailableLanguages } from '../stores/i18n';
 
 const translations = {
-	'pt-br': ptBR,
+	'pt-br': ptBr,
 	en,
 };
 
