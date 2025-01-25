@@ -1,5 +1,5 @@
-import en from '../../public/translations/en.json';
-import ptBR from '../../public/translations/pt-br.json';
+import en from './translations/en.json';
+import ptBR from './translations/pt-br.json';
 import type { AvailableLanguages } from '../stores/i18n';
 
 const translations = {
