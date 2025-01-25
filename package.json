@@ -9,8 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/node": "^9.0.2",
     "@astrojs/react": "^4.1.2",
+    "@astrojs/vercel": "^8.0.4",
     "@nanostores/persistent": "^0.10.2",
     "@nanostores/react": "^0.8.4",
     "@types/react": "^19.0.4",
