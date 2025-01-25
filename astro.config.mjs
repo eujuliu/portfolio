@@ -2,17 +2,12 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import remarkFlexibleMarkers from 'remark-flexible-markers';
 
-import vercel from '@astrojs/vercel/serverless';
+import netlify from '@astrojs/netlify';
 
 export default defineConfig({
 	integrations: [react()],
-	output: 'hybrid',
-	adapter: vercel({
-		webAnalytics: {
-			enabled: true,
-		},
-		maxDuration: 8,
-	}),
+	output: 'server',
+	adapter: netlify(),
 	markdown: {
 		shikiConfig: {
 			themes: {
