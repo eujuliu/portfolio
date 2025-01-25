@@ -4,7 +4,7 @@ subtitle: Se você quer aprender golang esse é um bom tutorial para você.
 publishedAt: '2025-01-16T23:34:39.375Z'
 author: Julio Martins
 unique_name: learn-basic-of-golang
-image: /public/images/learn-go-lang.jpeg
+image: /images/learn-go-lang.jpeg
 language: en
 tags:
   - golang
