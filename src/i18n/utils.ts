@@ -1,10 +1,10 @@
-// import en from '../i18n/translations/en.json';
-// import ptBR from '../i18n/translations/pt-br.json';
+import en from '../../public/translations/en.json';
+import ptBR from '../../public/translations/pt-br.json';
 import type { AvailableLanguages } from '../stores/i18n';
 
 const translations = {
-	'pt-br': {},
-	en: {},
+	'pt-br': ptBR,
+	en,
 };
 
 export function useTranslation(lang: AvailableLanguages) {
