@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Text from '../components/Text';
+import Link from '../components/Link';
+
+const links = [
+	{ to: '/aboutMe', name: 'aboutMe', translation: 'home.links.aboutMe' },
+	{ to: '/blog', name: 'blog', translation: 'home.links.blog' },
+];
+const socialMedias = [
+	{ to: 'https://github.com/eujuliu', name: 'github', icon: 'bxl-github' },
+	{
+		to: 'https://www.linkedin.com/in/ojuliomartins/',
+		name: 'linkedin',
+		icon: 'bxl-linkedin',
+	},
+	{ to: '', name: 'tiktok', icon: 'bxl-tiktok' },
+	{ to: '', name: 'youtube', icon: 'bxl-youtube' },
+];
+---
+
+<BaseLayout>
+	<div class="home-content">
+		<Text
+			className="greetings"
+			size="5xl"
+			weight="bolder"
+			translation="home.greetings"
+			client:only
+		/>
+		<Text
+			className="subject"
+			size="base"
+			weight="normal"
+			translation="home.subject"
+			client:only
+		/>
+
+		<div class="links">
+			{
+				links.map(({ name, to, translation }) => (
+					<Link name={name} to={to} client:only>
+						<i class="bx bx-right-arrow-alt" />
+						<Text
+							size="base"
+							weight="bold"
+							translation={translation}
+							client:only
+						/>
+					</Link>
+				))
+			}
+		</div>
+
+		<div class="social-medias">
+			{
+				socialMedias.map(({ name, to, icon }) => (
+					<Link name={name} to={to} client:only>
+						<i class={`bx ${icon} bx-lg`} />
+					</Link>
+				))
+			}
+		</div>
+	</div>
+</BaseLayout>
+
+<style is:global>
+	.home-content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		height: calc(100% - 54px);
+		padding: 2rem;
+		gap: 2rem;
+	}
+
+	.home-content .greetings,
+	.home-content .subject {
+		text-align: center;
+	}
+
+	.home-content .links {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 2rem;
+	}
+
+	.home-content .links .link astro-slot {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.home-content .social-medias {
+		display: flex;
+		gap: 1rem;
+	}
+
+	@media screen and (min-width: 768px) {
+		.home-content {
+			max-width: 80vw;
+		}
+	}
+</style>

@@ -1,0 +1,47 @@
+html {
+	--background: hsl(0, 0%, 95%);
+	--background-hover: hsl(0, 0%, 90%);
+	--text-color: hsl(0, 0%, 10%);
+	--text-color-hover: hsl(0, 0%, 40%);
+	--link-color: hsl(255, 90%, 76%);
+	--link-color-hover: hsl(255, 29%, 46%);
+	--separator-color: hsla(0, 0%, 0%, 0.13);
+	--list-marker-color: hsl(0, 0%, 67%);
+	--text-highlight-bg: hsla(49, 100%, 50%, 0.4);
+	--code-background: hsl(0, 0%, 93%);
+	--code-color: hsl(0, 0%, 30%);
+	--sb-track-color: #dbdbdb;
+	--sb-thumb-color: #8a8a8a;
+	--sb-border-color: #000;
+
+	--sb-size: 8px;
+	--code-radius: 4px;
+	--code-font: ui-monospace, SFMono-Regular, 'Cascadia Mono', 'Roboto Mono',
+		'DejaVu Sans Mono', 'Liberation Mono', Menlo, Monaco, 'Consolas',
+		'Source Code Pro', monospace;
+
+	--font-size-xs: 1.2rem;
+	--font-size-sm: 1.4rem;
+	--font-size-base: 1.6rem;
+	--font-size-lg: 1.8rem;
+	--font-size-xl: 2rem;
+	--font-size-2xl: 2.5rem;
+	--font-size-3xl: 3rem;
+	--font-size-4xl: 3.5rem;
+	--font-size-5xl: 4rem;
+}
+
+html[data-theme='dark'] {
+	--sb-track-color: #414141;
+	--sb-thumb-color: #a8a8a8;
+	--sb-border-color: #fff;
+	--background: hsl(0, 0%, 10%);
+	--background-hover: hsl(0, 0%, 15%);
+	--text-color: hsl(0, 0%, 90%);
+	--text-color-hover: hsl(0, 0%, 70%);
+	--text-highlight-bg: hsla(49, 100%, 50%, 0.4);
+	--code-background: hsl(0, 0%, 20%);
+	--code-color: hsl(0, 0%, 80%);
+	--separator-color: hsla(0, 0%, 100%, 0.13);
+	--list-marker-color: hsl(0, 0%, 40%);
+}

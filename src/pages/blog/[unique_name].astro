@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MarkdownContent from '../../components/MarkdownContent';
+import PostHeader from '../../components/PostHeader';
+
+const { unique_name } = Astro.params;
+const posts = await getCollection('blog', ({ data: { unique_name: name } }) => {
+	return name === unique_name;
+});
+
+if (posts.length < 1) return Astro.redirect('/404/');
+---
+
+<BaseLayout>
+	<div class="blog-post-content">
+		<PostHeader posts={posts} client:only />
+		<MarkdownContent posts={posts} client:only />
+	</div>
+</BaseLayout>
+
+<style is:global>
+	.blog-post-content {
+		/* padding: 2rem; */
+
+		display: flex;
+		gap: 2.5rem;
+		flex-direction: column;
+		width: 100%;
+	}
+
+	@media screen and (min-width: 768px) {
+		.blog-post-content {
+			align-items: center;
+			padding: 0;
+			/* max-width: 80vw; */
+		}
+	}
+</style>

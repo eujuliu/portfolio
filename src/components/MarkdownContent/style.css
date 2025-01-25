@@ -1,0 +1,142 @@
+.markdown-content {
+	margin-bottom: 16px;
+}
+
+.markdown-content .table-of-contents {
+	padding: 0 2rem;
+}
+
+.markdown-content .content {
+	font-weight: 400;
+	line-height: 1.5;
+	padding: 0 2rem;
+}
+
+.markdown-content .content p {
+	margin: 16px 0;
+}
+
+.markdown-content .content h1,
+.markdown-content .content h2,
+.markdown-content .content h3,
+.markdown-content .content h4,
+.markdown-content .content h5,
+.markdown-content .content h6 {
+	font-size: 135%;
+	margin: 28px 0 18px;
+}
+
+.markdown-content .content pre {
+	margin: 16px 0;
+	padding: 12px 16px;
+	background-color: var(--code-background) !important;
+	border-radius: var(--code-radius);
+}
+
+.markdown-content .content pre code {
+	font-family: var(--code-font);
+}
+
+.markdown-content .content p code {
+	padding: 0.1em 0.25em;
+	border-radius: var(--code-radius);
+	background-color: var(--code-background) !important;
+	font-size: calc(var(--font-size-sm) + 2%);
+	font-weight: 500;
+}
+
+.markdown-content .content table {
+	margin: 16px 0;
+	border-collapse: collapse;
+	margin-block-start: 1.6rem;
+	margin-block-end: 1.6rem;
+}
+
+.markdown-content .content table thead {
+	background-color: var(--background-hover);
+}
+
+.markdown-content .content table,
+.markdown-content .content table th,
+.markdown-content .content table td {
+	border: 1px solid #4b4b4b;
+}
+
+.markdown-content .content table th,
+.markdown-content .content table td {
+	padding: 4px 8px;
+}
+
+.markdown-content .content ol,
+.markdown-content .content ul {
+	margin: 16px 0;
+}
+
+.markdown-content .content ol ol,
+.markdown-content .content ul ul {
+	margin: 0;
+}
+
+.markdown-content .content li {
+	padding-top: 0.075em;
+	padding-bottom: 0.075em;
+	margin-inline-start: 3rem;
+}
+
+.markdown-content .content ol li::marker {
+	color: var(--list-marker-color);
+}
+
+.markdown-content .content p mark {
+	background-color: var(--text-highlight-bg);
+	color: var(--text-color);
+}
+
+.markdown-content .back-to-top {
+	display: flex;
+	align-items: center;
+	border-radius: 100%;
+	padding: 1rem;
+	background-color: var(--background-hover);
+	position: fixed;
+	bottom: 2rem;
+	right: 2rem;
+}
+
+.markdown-content .back-to-top .bx {
+	color: var(--text-color);
+}
+
+@media screen and (min-width: 768px) {
+	.markdown-content {
+		max-width: 70vw;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.markdown-content {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.markdown-content .table-of-contents-wrapper {
+		order: 2;
+		width: 300px;
+		position: relative;
+	}
+
+	.markdown-content .table-of-contents-wrapper .table-of-contents {
+		position: sticky;
+		top: 2rem;
+		padding: 0;
+	}
+
+	.markdown-content .table-of-contents-wrapper .table-of-contents ul {
+		list-style: none;
+	}
+
+	.markdown-content .content {
+		order: 1;
+		width: calc(100% - 300px);
+	}
+}
