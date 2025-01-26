@@ -64,8 +64,18 @@ const title = `JM | ${transformPathName(Astro.originPathname)}`;
 
 <script>
 	const html = document.querySelector('html');
-	const theme = localStorage.getItem('jm:theme') || 'dark';
-	const lang = localStorage.getItem('jm:locale') || 'pt-br';
+	let theme = localStorage.getItem('jm:theme');
+	let lang = localStorage.getItem('jm:locale');
+
+	if (!theme) {
+		localStorage.setItem('jm:theme', 'dark');
+		theme = localStorage.getItem('jm:theme') as string;
+	}
+
+	if (!lang) {
+		localStorage.setItem('jm:locale', 'pt-br');
+		lang = localStorage.getItem('jm:locale') as string;
+	}
 
 	if (html) {
 		html.setAttribute('data-theme', theme);
