@@ -1,14 +1,34 @@
-<!doctype html>
+---
+// @ts-check
+import "@/styles/global.css";
+---
+
+<script is:inline>
+	function setLocalStorageConfig() {
+		const data = localStorage.getItem("jm:configs");
+
+		if (!data) {
+			localStorage.setItem("jm:configs");
+		}
+	}
+
+	setLocalStorageConfig();
+</script>
+
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta content="width=device-width" name="viewport" />
 		<link href="/favicon.svg" rel="icon" type="image/svg+xml" />
-		<meta content={Astro.generator} name="generator" />
-		<title>Astro Basics</title>
+		<title>JM</title>
 	</head>
-	<body>
-		<slot />
+	<body class="bg-neutral-100 dark:bg-neutral-800">
+		<div class="content flex">
+			<main>
+				<slot />
+				<img src="" alt="" />
+			</main>
+		</div>
 	</body>
 </html>
 
