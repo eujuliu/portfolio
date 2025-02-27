@@ -1,0 +1,15 @@
+{
+	"navigation": {
+		"home": "Home",
+		"projects": "Projects",
+		"blog": "Blog",
+		"tags": {
+			"new": "NEW"
+		}
+	},
+	"languages": {
+		"pt-br": "Portuguese",
+		"en": "English",
+		"es": "Spanish"
+	}
+}

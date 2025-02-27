@@ -1,18 +1,61 @@
 ---
-// @ts-check
-import "@/styles/global.css";
+import '@/styles/global.css';
+import Header, { type MenuOptions } from '@/components/base/header';
+
+const menus: MenuOptions[] = [
+	{
+		name: 'Home',
+		link: '/',
+	},
+	{
+		name: 'Projects',
+		link: '/projects',
+	},
+	{
+		name: 'Blog',
+		link: '/blog',
+		tag: 'new',
+		tagStyle: '!bg-blue-400',
+	},
+];
 ---
 
 <script is:inline>
-	function setLocalStorageConfig() {
-		const data = localStorage.getItem("jm:configs");
+	function getLocalStorageConfig() {
+		let data = localStorage.getItem('jm:configs');
 
 		if (!data) {
-			localStorage.setItem("jm:configs");
+			const isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
+			const browserLanguage = window.navigator.language;
+
+			const availableLanguages = {
+				'en-US': 'en',
+				es: 'es',
+				'pt-BR': 'pt-br',
+			};
+
+			const defaultConfig = {
+				theme: isDarkTheme ? 'dark' : 'light',
+				language:
+					browserLanguage in availableLanguages
+						? availableLanguages[browserLanguage]
+						: 'en',
+			};
+
+			localStorage.setItem('jm:configs', JSON.stringify(defaultConfig));
+			data = defaultConfig;
 		}
+
+		return typeof data === 'string' ? JSON.parse(data) : data;
 	}
 
-	setLocalStorageConfig();
+	const config = getLocalStorageConfig();
+	const html = document.querySelector('html');
+
+	if (html) {
+		html.setAttribute('data-theme', config.theme);
+		html.setAttribute('lang', config.language);
+	}
 </script>
 
 <html lang="en">
@@ -22,21 +65,12 @@ import "@/styles/global.css";
 		<link href="/favicon.svg" rel="icon" type="image/svg+xml" />
 		<title>JM</title>
 	</head>
-	<body class="bg-neutral-100 dark:bg-neutral-800">
-		<div class="content flex">
+	<body class="flex justify-center bg-neutral-100 dark:bg-neutral-800">
+		<div class="content flex w-full">
+			<Header menus={menus} client:only />
 			<main>
 				<slot />
-				<img src="" alt="" />
 			</main>
 		</div>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
