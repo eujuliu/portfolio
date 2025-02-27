@@ -17,7 +17,10 @@ export default ts.config(
 				...globals.browser,
 			},
 		},
+		rules: {
+			"react/react-in-jsx-scope": "off",
+		},
 		ignores: ["!**/*.{tsx,ts,astro}"],
 	},
-	prettier,
+	prettier
 );
