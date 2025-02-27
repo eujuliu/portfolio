@@ -35,7 +35,7 @@ export default function Select({ val, placeholder, options, onChange }: Props) {
 	return (
 		<div ref={dropdownRef} className="relative">
 			<button
-				onClick={() => setOpen(true)}
+				onClick={() => setOpen(!open)}
 				className="flex justify-center items-center gap-2 dark:text-white rounded-md p-2 cursor-pointer border-neutral-200 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors delay-[5ms]"
 			>
 				<span className="font-bold">{val || placeholder}</span>
@@ -43,7 +43,7 @@ export default function Select({ val, placeholder, options, onChange }: Props) {
 			</button>
 
 			{open ? (
-				<div className="absolute -top-full flex-col items-start bg-neutral-800 dark:bg-neutral-100 rounded-md shadow-lg">
+				<div className="absolute flex-col items-start bg-neutral-800 dark:bg-neutral-100 rounded-md shadow-lg">
 					{options.map((opt, index) => (
 						<button
 							key={opt.value}
