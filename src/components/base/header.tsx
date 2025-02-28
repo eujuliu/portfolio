@@ -93,10 +93,10 @@ export default function Header({ menus }: Props) {
 						placeholder={<TextTranslator path="languages.placeholder" />}
 						options={languages}
 						val={$configs.language.toUpperCase()}
-						onChange={(value) =>
+						onChange={(option) =>
 							configs.set({
 								...$configs,
-								language: value as AvailableLanguages,
+								language: (option as any).value as AvailableLanguages,
 							})
 						}
 					/>
