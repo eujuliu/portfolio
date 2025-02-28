@@ -1,5 +1,80 @@
 ---
-import BaseLayout from "@/layouts/base-layout.astro";
+import TextTranslator from '@/components/ui/text-translator';
+import BaseLayout from '@/layouts/base-layout.astro';
+import { Linkedin, Mail } from 'lucide-react';
+
+const texts = [
+	'home.text.header',
+	'home.text.frontend',
+	'home.text.backend',
+	'home.text.cloud',
+	'home.text.teamwork',
+	'home.text.learner',
+	'home.text.footer',
+];
+
+const contacts = [
+	{
+		name: 'LinkedIn',
+		link: 'https://www.linkedin.com/in/ojuliomartins/',
+		icon: Linkedin,
+	},
+	{
+		name: 'Email',
+		link: 'mailto:contato.juliomartins@gmail.com',
+		icon: Mail,
+	},
+];
 ---
 
-<BaseLayout />
+<BaseLayout classes="flex items-center h-full mt-4">
+	<div
+		slot="main"
+		class="border border-neutral-200 dark:border-neutral-700 rounded-md p-4 lg:p-6 w-full"
+	>
+		<p
+			class="text-neutral-800 mb-4 pointer-events-none dark:text-neutral-100 font-mono text-xs"
+		>
+			juliomartins
+			<span class="text-neutral-400">/</span>
+			README
+			<span class="text-neutral-400">.md</span>
+		</p>
+
+		<h1
+			class="text-3xl font-bold border-b border-neutral-200 dark:border-neutral-700 mb-4 pb-4"
+		>
+			<TextTranslator path="home.greetings" client:only />
+		</h1>
+
+		{
+			texts.map((text) => (
+				<p class="not-first:my-4">
+					<TextTranslator path={text} client:only />
+				</p>
+			))
+		}
+
+		<h2
+			class="text-2xl font-bold border-b border-neutral-200 dark:border-neutral-700 mb-4 mt-4 pb-4"
+		>
+			<TextTranslator path="home.contact" client:only />
+		</h2>
+		<ul class="flex flex-col gap-4">
+			{
+				contacts.map((contact) => (
+					<li>
+						<a
+							href={contact.link}
+							target="_blank"
+							class="flex items-end gap-2 font-bold text-sm text-blue-500"
+						>
+							<contact.icon />
+							{contact.name}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</BaseLayout>

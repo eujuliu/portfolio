@@ -2,6 +2,10 @@
 import '@/styles/global.css';
 import Header, { type MenuOptions } from '@/components/base/header';
 
+interface Props {
+	classes?: string;
+}
+
 const menus: MenuOptions[] = [
 	{
 		name: 'Home',
@@ -18,6 +22,8 @@ const menus: MenuOptions[] = [
 		tagStyle: '!bg-blue-400',
 	},
 ];
+
+const { classes } = Astro.props;
 ---
 
 <script is:inline>
@@ -61,15 +67,17 @@ const menus: MenuOptions[] = [
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta content="width=device-width" name="viewport" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link href="/favicon.svg" rel="icon" type="image/svg+xml" />
 		<title>JM</title>
 	</head>
-	<body class="flex justify-center bg-neutral-100 dark:bg-neutral-800">
-		<div class="content flex w-full lg:w-[70%]">
+	<body
+		class="flex justify-center bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-100 lg:h-dvh"
+	>
+		<div class="flex flex-col lg:w-[70%] px-4 py-6 w-full">
 			<Header menus={menus} client:only />
-			<main>
-				<slot />
+			<main class={classes}>
+				<slot name="main" />
 			</main>
 		</div>
 	</body>

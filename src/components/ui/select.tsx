@@ -43,7 +43,7 @@ export default function Select({ val, placeholder, options, onChange }: Props) {
 			</button>
 
 			{open ? (
-				<div className="absolute flex-col items-start bg-neutral-800 dark:bg-neutral-100 rounded-md shadow-lg">
+				<div className="absolute flex-col items-start bg-neutral-600 dark:bg-neutral-100 rounded-md shadow-xl p-1">
 					{options.map((opt, index) => (
 						<button
 							key={opt.value}
@@ -51,7 +51,7 @@ export default function Select({ val, placeholder, options, onChange }: Props) {
 								setOpen(false);
 								onChange(opt.value);
 							}}
-							className={`text-md px-4 py-2 font-medium text-neutral-100 dark:text-neutral-800 hover:bg-blue-400 w-full transition-colors delay-[5ms] ${index == 0 ? 'rounded-t-md' : ''} ${index === options.length - 1 ? 'rounded-b-md' : ''}`}
+							className={`text-md px-1 py-1 font-medium text-neutral-100 hover:bg-neutral-500 dark:text-neutral-800 hover:dark:bg-neutral-200 w-full transition-colors delay-[5ms] rounded`}
 						>
 							{opt.text}
 						</button>

@@ -11,5 +11,5 @@ export default function TextTranslator({ path }: Props) {
 	const $language = useStore(configs).language;
 	const t = useTranslation($language);
 
-	return <>{t(path)}</>;
+	return <span dangerouslySetInnerHTML={{ __html: t(path) }}></span>;
 }

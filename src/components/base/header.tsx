@@ -4,7 +4,7 @@ import Select, { type SelectOption } from '../ui/select';
 import { useStore } from '@nanostores/react';
 import { configs, type AvailableLanguages } from '@/stores/configs';
 import Button from '../ui/button';
-import { Moon, SunDim, Menu, PanelRightClose } from 'lucide-react';
+import { Moon, SunDim, Menu, X } from 'lucide-react';
 
 export interface MenuOptions {
 	name: string;
@@ -48,14 +48,14 @@ export default function Header({ menus }: Props) {
 	});
 
 	return (
-		<header className="relative z-10 w-full px-4 py-6 flex justify-between items-center lg:gap-10">
-			<span className="relative dark:text-white font-bold text-xl z-10 w-fit h-fit">
+		<header className="sticky top-0 bg-neutral-100 dark:bg-neutral-800 z-10 w-full flex justify-between items-center lg:gap-10 py-4">
+			<a href="/" className="relative font-bold text-xl z-10 w-fit h-fit">
 				JM
-			</span>
+			</a>
 
 			<div className="self-end relative justify-self-start z-10 lg:hidden">
 				<Button onClick={() => setMenuOpen(!menuOpen)} style="border-0">
-					{!menuOpen ? <Menu size={26} /> : <PanelRightClose size={26} />}
+					{!menuOpen ? <Menu size={26} /> : <X size={26} />}
 				</Button>
 			</div>
 
@@ -68,7 +68,7 @@ export default function Header({ menus }: Props) {
 							<li key={menu.name} className="relative">
 								<a
 									href={menu.link}
-									className="dark:text-white not-lg:text-5xl font-bold hover:text-blue-400 transition-colors delay-[5ms]"
+									className="not-lg:text-5xl font-bold hover:text-blue-500 transition-colors delay-[5ms]"
 								>
 									<TextTranslator
 										path={`navigation.${menu.name.toLowerCase()}`}
