@@ -96,7 +96,7 @@ export default function Header({ menus }: Props) {
 						onChange={(option) =>
 							configs.set({
 								...$configs,
-								language: (option as any).value as AvailableLanguages,
+								language: option.value as AvailableLanguages,
 							})
 						}
 					/>

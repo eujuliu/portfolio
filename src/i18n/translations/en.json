@@ -1,4 +1,7 @@
 {
+	"warnings": {
+		"noData": "No data..."
+	},
 	"navigation": {
 		"home": "Home",
 		"projects": "Projects",
