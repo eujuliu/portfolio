@@ -3,7 +3,7 @@ import { ChevronDown, Check } from 'lucide-react';
 import TextTranslator from './text-translator';
 
 export interface SelectOption {
-	text: ReactNode;
+	text: string;
 	value: string;
 }
 
@@ -92,17 +92,20 @@ export default function Select({
 			</button>
 
 			{open ? (
-				<div className="absolute flex flex-col gap-1 bg-neutral-600 dark:bg-neutral-100 rounded-md shadow-xl p-1 z-10">
+				<div className="absolute flex flex-col gap-1 bg-neutral-600 dark:bg-neutral-100 rounded-md shadow-xl p-1 z-10 max-h-[300px] overflow-auto">
 					{options.length > 0 ? (
 						options.map((opt) => (
 							<button
 								key={opt.value}
 								onClick={() => changeValue(opt, isSelected(opt))}
-								className={`flex items-center gap-0.5 text-start px-2 py-1 hover:bg-neutral-500 hover:dark:bg-neutral-200 w-full transition-colors delay-[5ms] rounded ${isSelected(opt) ? 'bg-neutral-500 dark:bg-neutral-200' : ''}`}
+								className={`flex items-center gap-0.5 text-start px-2 py-1 hover:bg-neutral-500 hover:dark:bg-neutral-200 w-full transition-colors delay-[5ms] rounded ${
+									isSelected(opt) ? 'bg-neutral-500 dark:bg-neutral-200' : ''
+								}`}
 							>
-								<span className="grow-1 text-sm font-medium text-neutral-100 dark:text-neutral-800">
-									{opt.text}
-								</span>
+								<TextTranslator
+									path={opt.text}
+									className="grow-1 text-sm font-medium text-neutral-100 dark:text-neutral-800"
+								/>
 								<span className="flex items-center h-[20px] w-[15px]">
 									{isSelected(opt) ? (
 										<Check className="text-neutral-800" size={15} />

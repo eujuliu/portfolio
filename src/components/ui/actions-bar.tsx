@@ -8,6 +8,7 @@ export interface ActionsBarFilter {
 	values: SelectOption[];
 	itemText?: 'text' | 'value';
 	multiple?: boolean;
+	initialValue?: string;
 }
 
 interface Props {
@@ -19,7 +20,7 @@ type State = Record<string, string>;
 
 export default function ActionsBar({ title, filters }: Props) {
 	const initial = filters.reduce<Record<string, any>>(
-		(acc, filter) => ({ ...acc, [filter.id]: null }),
+		(acc, filter) => ({ ...acc, [filter.id]: filter.initialValue || null }),
 		{}
 	);
 	const [state, dispatch] = useReducer<State, any>(reducer, initial);
@@ -33,7 +34,7 @@ export default function ActionsBar({ title, filters }: Props) {
 
 	return (
 		<div className="flex justify-between items-center py-4 lg:py-8">
-			<h1 className="font-bold text-3xl lg:text-5xl">{title}</h1>
+			<h1 className="font-bold text-xl sm:text-3xl lg:text-5xl">{title}</h1>
 			<div className="flex gap-1 items-center">
 				{filters.map(({ id, text, values, itemText, multiple }) => (
 					<Select

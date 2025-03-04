@@ -5,11 +5,17 @@ import { useTranslation } from '@/i18n';
 
 interface Props {
 	path: string;
+	className?: string;
 }
 
-export default function TextTranslator({ path }: Props) {
+export default function TextTranslator({ path, className }: Props) {
 	const $language = useStore(configs).language;
 	const t = useTranslation($language);
 
-	return <span dangerouslySetInnerHTML={{ __html: t(path) }}></span>;
+	return (
+		<span
+			className={className}
+			dangerouslySetInnerHTML={{ __html: t(path) }}
+		></span>
+	);
 }

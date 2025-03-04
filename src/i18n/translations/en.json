@@ -27,5 +27,11 @@
 			"footer": "I'm motivated by opportunities to innovate, solve challenging problems, and build systems that make a difference. Let’s connect and create something great together!"
 		},
 		"contact": "Contact"
+	},
+	"projects": {
+		"title": "My Projects"
+	},
+	"blog": {
+		"title": "All Posts"
 	}
 }

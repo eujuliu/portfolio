@@ -1,13 +1,21 @@
 // @ts-check
-import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
+import { defineConfig, envField } from 'astro/config';
+import react from '@astrojs/react';
 
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  integrations: [react()],
+	integrations: [react()],
+	env: {
+		schema: {
+			OCTOKIT_AUTH_TOKEN: envField.string({
+				context: 'server',
+				access: 'secret',
+			}),
+		},
+	},
 
-  vite: {
-    plugins: [tailwindcss()],
-  },
+	vite: {
+		plugins: [tailwindcss()],
+	},
 });

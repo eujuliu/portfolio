@@ -1,0 +1,32 @@
+---
+import ActionsBar, { type ActionsBarFilter } from '@/components/ui/actions-bar';
+import TextTranslator from '@/components/ui/text-translator';
+import BaseLayout from '@/layouts/base-layout.astro';
+
+const filters: ActionsBarFilter[] = [
+	{
+		id: 'order',
+		text: 'Order',
+		values: [
+			{ text: 'Oldest', value: 'oldest' },
+			{ text: 'Newest', value: 'newest' },
+		],
+		multiple: false,
+		itemText: 'text',
+	},
+	{
+		id: 'tags',
+		text: 'Tags',
+		values: [],
+		multiple: true,
+	},
+];
+---
+
+<BaseLayout>
+	<div slot="main">
+		<ActionsBar filters={filters} client:only="react">
+			<TextTranslator path="blog.title" client:only="react" slot="title" />
+		</ActionsBar>
+	</div>
+</BaseLayout>

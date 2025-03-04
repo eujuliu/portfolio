@@ -74,7 +74,7 @@ const { classes } = Astro.props;
 	<body
 		class="flex justify-center bg-neutral-100 dark:bg-neutral-800 dark:text-neutral-100 lg:h-dvh"
 	>
-		<div class="flex flex-col lg:w-[70%] px-4 py-6 w-full">
+		<div class="flex flex-col lg:w-[80%] xl:w-[70%] px-4 py-6 w-full">
 			<Header menus={menus} client:only="react" />
 			<main class={classes}>
 				<slot name="main" />
