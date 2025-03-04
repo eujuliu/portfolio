@@ -1,5 +1,5 @@
 import { Circle, GitFork, Github, Star } from 'lucide-react';
-import Colors from '../../../public/github-languages-colors.json';
+import Colors from '@/data/github-languages-colors.json';
 
 interface Props {
 	projects: any[];
