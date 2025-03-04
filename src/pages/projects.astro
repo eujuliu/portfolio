@@ -1,11 +1,13 @@
 ---
+import BaseLayout from '@/layouts/base-layout.astro';
+
 import ActionsBar, { type ActionsBarFilter } from '@/components/ui/actions-bar';
 import TextTranslator from '@/components/ui/text-translator';
-import BaseLayout from '@/layouts/base-layout.astro';
-import { Circle, GitFork, Github, Star } from 'lucide-react';
-import { Octokit } from 'octokit';
-import Colors from '../../public/github-languages-colors.json';
 import type { SelectOption } from '@/components/ui/select';
+import List from '@/components/projects/list';
+
+import { Octokit } from 'octokit';
+
 import formatString from '@/helpers/format-string';
 
 interface Project {
@@ -24,10 +26,10 @@ interface Project {
 const filters: ActionsBarFilter[] = [
 	{
 		id: 'order',
-		text: 'Order',
+		text: 'filters.order',
 		values: [
-			{ text: 'Oldest', value: 'oldest' },
-			{ text: 'Newest', value: 'newest' },
+			{ text: 'filters.oldest', value: 'oldest' },
+			{ text: 'filters.newest', value: 'newest' },
 		],
 		multiple: false,
 		itemText: 'text',
@@ -35,7 +37,7 @@ const filters: ActionsBarFilter[] = [
 	},
 	{
 		id: 'tags',
-		text: 'Tags',
+		text: 'filters.tags',
 		values: [],
 		multiple: true,
 	},
@@ -94,66 +96,10 @@ await octokit
 
 <BaseLayout>
 	<div slot="main">
-		<ActionsBar filters={filters} client:only>
-			<TextTranslator path="projects.title" client:only slot="title" />
+		<ActionsBar filters={filters} client:only="react">
+			<TextTranslator path="projects.title" client:only="react" slot="title" />
 		</ActionsBar>
 
-		<div class="grid gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-			{
-				projects.map(
-					({ name, link, description, where, language, stars, forks }) => (
-						<div class="grid gap-2 grid-rows-3 border border-neutral-200 dark:border-neutral-700 rounded-lg p-4 w-full">
-							<div class="flex justify-between items-center font-bold">
-								<a
-									href={link}
-									target="_blank"
-									class="text-lg text-blue-500 hover:underline underline-offset-2"
-								>
-									{name}
-								</a>
-								<Github size={12} />
-							</div>
-
-							<p class="font-medium text-xs text-neutral-500 line-clamp-2">
-								{description}
-							</p>
-
-							<div class="flex gap-4 items-center">
-								{language ? (
-									<span class="flex items-center gap-1 font-bold text-sm">
-										<Circle
-											fill={(Colors as any)[language]}
-											stroke="none"
-											size={15}
-										/>
-										{language}
-									</span>
-								) : (
-									''
-								)}
-
-								{stars ? (
-									<span class="flex items-center gap-1">
-										<Star size={15} />
-										<span class="text-xs font-medium">{stars}</span>
-									</span>
-								) : (
-									''
-								)}
-
-								{forks ? (
-									<span class="flex items-center gap-1">
-										<GitFork size={15} />
-										<span class="text-xs font-medium">{forks}</span>
-									</span>
-								) : (
-									''
-								)}
-							</div>
-						</div>
-					)
-				)
-			}
-		</div>
+		<List projects={projects} client:only="react" />
 	</div>
 </BaseLayout>

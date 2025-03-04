@@ -1,0 +1,160 @@
+---
+import ActionsBar, { type ActionsBarFilter } from '@/components/ui/actions-bar';
+import TextTranslator from '@/components/ui/text-translator';
+import BaseLayout from '@/layouts/base-layout.astro';
+import formatDate from '@/helpers/format-date';
+
+interface Post {
+	id: string;
+	title: string;
+	category: string;
+	imageUrl: string;
+	alt: string;
+	createdAt: string;
+	updatedAt: string;
+	tags: string[];
+}
+
+const filters: ActionsBarFilter[] = [
+	{
+		id: 'order',
+		text: 'filters.order',
+		values: [
+			{ text: 'filters.oldest', value: 'oldest' },
+			{ text: 'filters.newest', value: 'newest' },
+		],
+		multiple: false,
+		itemText: 'text',
+		initialValue: 'newest',
+	},
+	{
+		id: 'categories',
+		text: 'filters.categories',
+		values: [],
+		multiple: true,
+	},
+];
+
+const posts: Post[] = [
+	{
+		id: crypto.randomUUID(),
+		title: 'How to optimize Docker images',
+		category: 'DevOps',
+		alt: 'test',
+		imageUrl:
+			'https://images.pexels.com/photos/264905/pexels-photo-264905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+		createdAt: new Date().toJSON(),
+		updatedAt: new Date().toJSON(),
+		tags: ['docker', 'docker-images', 'optimize'],
+	},
+	{
+		id: crypto.randomUUID(),
+		title: 'How to optimize Docker images',
+		category: 'DevOps',
+		alt: 'test',
+		imageUrl:
+			'https://images.pexels.com/photos/264905/pexels-photo-264905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+		createdAt: new Date().toJSON(),
+		updatedAt: new Date().toJSON(),
+		tags: ['docker', 'docker-images', 'optimize'],
+	},
+	{
+		id: crypto.randomUUID(),
+		title: 'How to optimize Docker images',
+		category: 'DevOps',
+		alt: 'test',
+		imageUrl:
+			'https://images.pexels.com/photos/264905/pexels-photo-264905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+		createdAt: new Date().toJSON(),
+		updatedAt: new Date().toJSON(),
+		tags: ['docker', 'docker-images', 'optimize'],
+	},
+	{
+		id: crypto.randomUUID(),
+		title: 'How to optimize Docker images',
+		category: 'DevOps',
+		alt: 'test',
+		imageUrl:
+			'https://images.pexels.com/photos/264905/pexels-photo-264905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+		createdAt: new Date().toJSON(),
+		updatedAt: new Date().toJSON(),
+		tags: ['docker', 'docker-images', 'optimize'],
+	},
+	{
+		id: crypto.randomUUID(),
+		title: 'How to optimize Docker images',
+		category: 'DevOps',
+		alt: 'test',
+		imageUrl:
+			'https://images.pexels.com/photos/264905/pexels-photo-264905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+		createdAt: new Date().toJSON(),
+		updatedAt: new Date().toJSON(),
+		tags: ['docker', 'docker-images', 'optimize'],
+	},
+	{
+		id: crypto.randomUUID(),
+		title: 'How to optimize Docker images',
+		category: 'DevOps',
+		alt: 'test',
+		imageUrl:
+			'https://images.pexels.com/photos/264905/pexels-photo-264905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+		createdAt: new Date().toJSON(),
+		updatedAt: new Date().toJSON(),
+		tags: ['docker', 'docker-images', 'optimize'],
+	},
+	{
+		id: crypto.randomUUID(),
+		title: 'How to optimize Docker images',
+		category: 'DevOps',
+		alt: 'test',
+		imageUrl:
+			'https://images.pexels.com/photos/264905/pexels-photo-264905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+		createdAt: new Date().toJSON(),
+		updatedAt: new Date().toJSON(),
+		tags: ['docker', 'docker-images', 'optimize'],
+	},
+];
+---
+
+<BaseLayout>
+	<div slot="main">
+		<ActionsBar filters={filters} client:only="react">
+			<TextTranslator path="blog.title" client:only="react" slot="title" />
+		</ActionsBar>
+
+		<div
+			class="grid gap-5 gap-y-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+		>
+			{
+				posts.map((post) => (
+					<div class="flex flex-col gap-4">
+						<a href={`/blog/${post.id}`}>
+							<img
+								src={post.imageUrl}
+								alt={post.alt}
+								class="max-w-full rounded-2xl"
+							/>
+						</a>
+
+						<div class="flex flex-col gap-1">
+							<div class="text-neutral-500">
+								<span class="text-sm font-bold">
+									{formatDate(post.updatedAt)}
+								</span>
+								<span>|</span>
+								<span class="text-sm font-bold">{post.category}</span>
+							</div>
+
+							<a
+								href={`/blog/${post.id}`}
+								class="text-xl font-bold hover:text-blue-500 transition-colors delay-[5ms] line-clamp-2"
+							>
+								{post.title}
+							</a>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</BaseLayout>

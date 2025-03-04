@@ -1,4 +1,11 @@
 {
+	"filters": {
+		"newest": "Newest",
+		"oldest": "Oldest",
+		"order": "Order",
+		"tags": "Tags",
+		"categories": "Categories"
+	},
 	"warnings": {
 		"noData": "No data..."
 	},

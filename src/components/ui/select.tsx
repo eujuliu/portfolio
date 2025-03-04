@@ -45,13 +45,20 @@ export default function Select({
 	function buttonPlaceholder() {
 		if (!val || val === '' || val?.length < 1) return placeholder;
 
-		if (Array.isArray(val)) return val.map((v) => v.text).join(', ');
+		if (Array.isArray(val))
+			return val.map((v) => (
+				<TextTranslator
+					key={v.text}
+					path={v.text}
+					className="after:content-[','] last:after:content-['']"
+				/>
+			));
 
 		const item = options.find((i) => i.value === val);
 
 		if (!item) return val;
 
-		return item[itemText];
+		return <TextTranslator path={item[itemText]} />;
 	}
 
 	function changeValue(option: SelectOption, isSelected: boolean = false) {
@@ -92,7 +99,7 @@ export default function Select({
 			</button>
 
 			{open ? (
-				<div className="absolute flex flex-col gap-1 bg-neutral-600 dark:bg-neutral-100 rounded-md shadow-xl p-1 z-10 max-h-[300px] overflow-auto">
+				<div className="absolute flex flex-col gap-1 scroll bg-neutral-600 dark:bg-neutral-100 rounded-md shadow-xl p-1 z-10 max-h-[300px] overflow-auto">
 					{options.length > 0 ? (
 						options.map((opt) => (
 							<button
@@ -108,7 +115,10 @@ export default function Select({
 								/>
 								<span className="flex items-center h-[20px] w-[15px]">
 									{isSelected(opt) ? (
-										<Check className="text-neutral-800" size={15} />
+										<Check
+											className="text-neutral-200 dark:text-neutral-800"
+											size={15}
+										/>
 									) : (
 										''
 									)}

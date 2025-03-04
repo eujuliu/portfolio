@@ -5,7 +5,7 @@ import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-	integrations: [react()],
+	integrations: [react({ experimentalReactChildren: true })],
 	env: {
 		schema: {
 			OCTOKIT_AUTH_TOKEN: envField.string({

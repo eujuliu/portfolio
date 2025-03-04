@@ -64,7 +64,9 @@ export default function Header({ menus }: Props) {
 			</div>
 
 			<div
-				className={`flex flex-col w-0 lg:flex-row not-lg:justify-center lg:justify-between items-center not-lg:overflow-hidden gap-4 z-0 not-lg:fixed top-0 right-0  not-lg:h-dvh lg:w-full ${menuOpen ? 'w-dvw' : ''} not-lg:bg-neutral-100 not-lg:dark:bg-neutral-800 transition-all`}
+				className={`flex flex-col w-0 lg:flex-row not-lg:justify-center lg:justify-between items-center not-lg:overflow-hidden gap-4 z-0 not-lg:fixed top-0 right-0  not-lg:h-dvh lg:w-full ${
+					menuOpen ? 'w-dvw' : ''
+				} not-lg:bg-neutral-100 not-lg:dark:bg-neutral-800 transition-all`}
 			>
 				<nav>
 					<ul className="flex flex-col gap-8 justify-center items-center lg:flex-row">
@@ -72,7 +74,9 @@ export default function Header({ menus }: Props) {
 							<li key={menu.name} className="relative">
 								<a
 									href={menu.link}
-									className={`not-lg:text-5xl font-bold hover:text-blue-500 transition-colors delay-[5ms] ${isActive(menu) ? 'text-blue-500' : ''}`}
+									className={`not-lg:text-5xl font-bold hover:text-blue-500 transition-colors delay-[5ms] ${
+										isActive(menu) ? 'text-blue-500' : ''
+									}`}
 								>
 									<TextTranslator
 										path={`navigation.${menu.name.toLowerCase()}`}
@@ -92,7 +96,7 @@ export default function Header({ menus }: Props) {
 					</ul>
 				</nav>
 
-				<div className="flex not-lg:gap-10 not-lg:m-10">
+				<div className="flex gap-2 not-lg:gap-10 not-lg:m-10">
 					<Select
 						placeholder={<TextTranslator path="languages.placeholder" />}
 						options={languages}
