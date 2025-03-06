@@ -1,9 +1,12 @@
+import type { AvailableLanguages } from '@/stores/configs';
+
 export default function formatDate(
 	str: string,
-	options: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric' }
+	language: AvailableLanguages,
+	options: Intl.DateTimeFormatOptions = { month: 'short', day: '2-digit' }
 ) {
 	const date = new Date(str);
-	const formatted = new Intl.DateTimeFormat('en-US', options).format(date);
+	const formatted = new Intl.DateTimeFormat(language, options).format(date);
 
 	return formatted;
 }

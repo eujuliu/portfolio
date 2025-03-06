@@ -48,7 +48,8 @@ export default function Header({ menus }: Props) {
 	});
 
 	function isActive(menu: MenuOptions) {
-		return window.location.pathname === menu.link;
+		const regex = new RegExp(`^${menu.link}(?:/|$)`);
+		return regex.test(window.location.pathname);
 	}
 
 	return (

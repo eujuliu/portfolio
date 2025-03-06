@@ -1,6 +1,7 @@
 ---
 import '@/styles/global.css';
 import Header, { type MenuOptions } from '@/components/base/header';
+import TextTranslator from '@/components/ui/text-translator';
 
 interface Props {
 	classes?: string;
@@ -64,7 +65,7 @@ const { classes } = Astro.props;
 	}
 </script>
 
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -79,6 +80,12 @@ const { classes } = Astro.props;
 			<main class={classes}>
 				<slot name="main" />
 			</main>
+			<footer
+				class="py-6 mt-6 text-sm border-t-1 border-neutral-300 dark:border-neutral-700"
+			>
+				©{new Date().getFullYear()} Julio Martins.
+				<TextTranslator path="reservedRights" client:only="react" />.
+			</footer>
 		</div>
 	</body>
 </html>

@@ -1,0 +1,100 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '@/layouts/base-layout.astro';
+import { getCollection } from 'astro:content';
+import TextTranslator from '@/components/ui/text-translator';
+import Image from '@/components/ui/image';
+import TableOfContents from '@/components/blog/table-of-contents';
+import Markdown, { type Post } from '@/components/blog/markdown';
+import type { AvailableLanguages } from '@/stores/configs';
+
+interface Props {
+	posts: Record<AvailableLanguages, Post>;
+	headings: Record<AvailableLanguages, any>;
+	fields: Record<AvailableLanguages, any>;
+}
+
+export const getStaticPaths = (async () => {
+	const posts = await getCollection('blog');
+	const translationObj = { en: {}, 'pt-br': {}, es: {} };
+	const data = posts.reduce<Record<string, any>>((acc, post) => {
+		const obj = acc[post.data.link] || {
+			fields: JSON.parse(JSON.stringify(translationObj)),
+			posts: JSON.parse(JSON.stringify(translationObj)),
+			headings: JSON.parse(JSON.stringify(translationObj)),
+		};
+
+		obj.fields[post.data.language] = {
+			...post.data,
+			src: post.data.image_url,
+		};
+
+		obj.posts[post.data.language] = post;
+		obj.headings[post.data.language] = post.rendered?.metadata?.headings;
+
+		acc[post.data.link] = obj;
+
+		return acc;
+	}, {});
+
+	return Object.entries(data).map(([key, value]) => ({
+		params: { link: key },
+		props: { ...value },
+	}));
+}) satisfies GetStaticPaths;
+
+const { fields, posts, headings } = Astro.props;
+---
+
+<BaseLayout>
+	<div slot="main" class="relative flex items-center flex-col">
+		<TextTranslator
+			path="title"
+			translations={fields}
+			className="font-bold text-2xl mt-4 lg:mt-8 lg:text-4xl text-center"
+			client:only="react"
+		/>
+
+		<TextTranslator
+			path="description"
+			translations={fields}
+			className="font-medium text-md lg:text-xl text-neutral-700 dark:text-neutral-400 my-4 lg:my-8 text-center"
+			client:only="react"
+		/>
+
+		<span
+			class="text-neutral-500 dark:text-neutral-300 text-base lg:text-xl font-bold mb-4 lg:mb-8"
+		>
+			<TextTranslator
+				path="created_at"
+				translations={fields}
+				client:only="react"
+			/> | <TextTranslator
+				path="category"
+				translations={fields}
+				client:only="react"
+			/>
+		</span>
+
+		<Image
+			src={fields.en.src}
+			alt={fields.en.alt}
+			translations={fields}
+			className="rounded-xl"
+			client:only="react"
+		/>
+
+		<div class="relative flex flex-col gap-4 lg:flex-row">
+			<TableOfContents
+				headings={headings}
+				client:only="react"
+				className="lg:order-2 lg:sticky lg:top-10 lg:min-w-[200px]"
+			/>
+			<Markdown
+				posts={posts}
+				className="prose md:prose-base dark:prose-invert lg:order-1 mt-8"
+				client:only="react"
+			/>
+		</div>
+	</div>
+</BaseLayout>

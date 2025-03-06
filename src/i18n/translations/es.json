@@ -1,1 +1,46 @@
-{}
+{
+	"reservedRights": "Todos los derechos reservados",
+	"filters": {
+		"newest": "Más recientes",
+		"oldest": "Más antiguos",
+		"order": "Ordenar",
+		"tags": "Etiquetas",
+		"categories": "Categorías"
+	},
+	"warnings": {
+		"noData": "Sin datos..."
+	},
+	"navigation": {
+		"home": "Inicio",
+		"projects": "Proyectos",
+		"blog": "Blog",
+		"tags": {
+			"new": "NUEVO"
+		}
+	},
+	"languages": {
+		"pt-br": "Portugués",
+		"en": "Inglés",
+		"es": "Español"
+	},
+	"home": {
+		"greetings": "Hola, soy Julio 🖐",
+		"text": {
+			"header": "Soy un ingeniero de software apasionado por resolver problemas complejos y ofrecer resultados impactantes. Con experiencia en desarrollo frontend y backend, disfruto creando experiencias de usuario fluidas y diseñando sistemas escalables.",
+			"frontend": "<strong>Desarrollo Frontend:</strong> Experto en <strong>Vue.js</strong>, <strong>React.js</strong> y <strong>TypeScript</strong>, he mejorado el rendimiento y la seguridad de plataformas, entregando interfaces visualmente atractivas que aumentan la satisfacción del cliente.",
+			"backend": "<strong>Experiencia en Backend:</strong> He desarrollado APIs robustas utilizando <strong>Node.js</strong>, <strong>TypeScript</strong> y Prisma, optimizando procesos y reduciendo el tiempo de despliegue en un 50%. Enfoque en soluciones escalables y seguras.",
+			"cloud": "<strong>Cloud & DevOps:</strong> Experiencia en la optimización de despliegues con <strong>Docker</strong>, <strong>Terraform</strong> y pipelines <strong>CI/CD</strong>, garantizando eficiencia operativa y alto rendimiento.",
+			"teamwork": "<strong>Liderazgo & Trabajo en Equipo:</strong> Valoro la colaboración y he liderado con éxito proyectos multidisciplinarios, equilibrando la excelencia técnica con la entrega puntual.",
+			"learner": "<strong>Aprendizaje Continuo:</strong> Programador autodidacta, siempre estoy explorando nuevas tecnologías y mejorando mis habilidades. Desde <strong>JavaScript</strong> hasta <strong>Python</strong> y <strong>SQL</strong>, siempre estoy listo para el próximo desafío.",
+			"footer": "Me motivan las oportunidades para innovar, resolver problemas desafiantes y construir sistemas que marquen la diferencia. ¡Conectémonos y creemos algo increíble juntos!"
+		},
+		"contact": "Contacto"
+	},
+	"projects": {
+		"title": "Mis Proyectos"
+	},
+	"blog": {
+		"title": "Todas las Publicaciones",
+		"tableOfContents": "Tabla de Contenidos"
+	}
+}

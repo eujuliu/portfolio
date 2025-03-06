@@ -35,7 +35,7 @@ export default function ActionsBar({ title, filters }: Props) {
 	return (
 		<div className="flex justify-between items-center py-4 lg:py-8">
 			<h1 className="font-bold text-xl sm:text-3xl lg:text-5xl">{title}</h1>
-			<div className="flex gap-1 items-center">
+			<div className="flex gap-1 items-center hidden">
 				{filters.map(({ id, text, values, itemText, multiple }) => (
 					<Select
 						key={id}
