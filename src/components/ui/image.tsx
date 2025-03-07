@@ -1,16 +1,16 @@
-import { configs, type AvailableLanguages } from "@/stores/configs"
-import { useStore } from "@nanostores/react"
+import { configs, type AvailableLanguages } from "@/stores/configs";
+import { useStore } from "@nanostores/react";
 
 export type ImageTranslation = {
-	[key in AvailableLanguages]: Record<string, string>
-}
+	[key in AvailableLanguages]: Record<string, string>;
+};
 interface Props {
-	src: string
-	alt: string
-	width?: string
-	height?: string
-	className?: string
-	translations?: ImageTranslation
+	src: string;
+	alt: string;
+	width?: string;
+	height?: string;
+	className?: string;
+	translations?: ImageTranslation;
 }
 
 export default function Image({
@@ -21,10 +21,10 @@ export default function Image({
 	className,
 	translations,
 }: Props) {
-	const $language = useStore(configs).language
+	const $language = useStore(configs).language;
 	if (translations) {
-		src = translations[$language].src
-		alt = translations[$language].alt
+		src = translations[$language].src;
+		alt = translations[$language].alt;
 	}
 
 	return (
@@ -37,5 +37,5 @@ export default function Image({
 			decoding="async"
 			loading="lazy"
 		/>
-	)
+	);
 }

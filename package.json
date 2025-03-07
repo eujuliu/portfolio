@@ -7,8 +7,8 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"lint": "prettier --check src && eslint src",
-		"lint:fix": "prettier --write src && eslint --fix src"
+		"lint": "prettier --check . && eslint src",
+		"lint:fix": "prettier --write . && eslint --fix src"
 	},
 	"engines": {
 		"node": "22.14.0"

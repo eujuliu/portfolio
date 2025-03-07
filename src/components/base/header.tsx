@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react"
-import TextTranslator from "../ui/text-translator"
-import Select, { type SelectOption } from "../ui/select"
-import { useStore } from "@nanostores/react"
-import { configs, type AvailableLanguages } from "@/stores/configs"
-import Button from "../ui/button"
-import { Moon, SunDim, Menu, X } from "lucide-react"
+import { useEffect, useState } from "react";
+import TextTranslator from "../ui/text-translator";
+import Select, { type SelectOption } from "../ui/select";
+import { useStore } from "@nanostores/react";
+import { configs, type AvailableLanguages } from "@/stores/configs";
+import Button from "../ui/button";
+import { Moon, SunDim, Menu, X } from "lucide-react";
 
 export interface MenuOptions {
-	name: string
-	link: string
-	tag?: string
-	tagStyle?: string
+	name: string;
+	link: string;
+	tag?: string;
+	tagStyle?: string;
 }
 
 interface Props {
-	menus: MenuOptions[]
+	menus: MenuOptions[];
 }
 
 const languages: SelectOption[] = [
@@ -30,26 +30,26 @@ const languages: SelectOption[] = [
 		value: "es",
 		text: "languages.es",
 	},
-]
+];
 
 export default function Header({ menus }: Props) {
-	const [menuOpen, setMenuOpen] = useState(false)
-	const $configs = useStore(configs)
+	const [menuOpen, setMenuOpen] = useState(false);
+	const $configs = useStore(configs);
 
 	useEffect(() => {
 		const handleScreenResize = () => {
-			const width = window.innerWidth
-			if (width >= 1024 && menuOpen) setMenuOpen(false)
-		}
+			const width = window.innerWidth;
+			if (width >= 1024 && menuOpen) setMenuOpen(false);
+		};
 
-		window.addEventListener("resize", handleScreenResize)
+		window.addEventListener("resize", handleScreenResize);
 
-		return () => window.removeEventListener("resize", handleScreenResize)
-	})
+		return () => window.removeEventListener("resize", handleScreenResize);
+	});
 
 	function isActive(menu: MenuOptions) {
-		const regex = new RegExp(`^${menu.link}(?:/|$)`)
-		return regex.test(window.location.pathname)
+		const regex = new RegExp(`^${menu.link}(?:/|$)`);
+		return regex.test(window.location.pathname);
 	}
 
 	return (
@@ -105,7 +105,8 @@ export default function Header({ menus }: Props) {
 						onChange={(option) =>
 							configs.set({
 								...$configs,
-								language: option.value as AvailableLanguages,
+								language: (option as Record<string, string>)
+									.value as AvailableLanguages,
 							})
 						}
 					/>
@@ -124,5 +125,5 @@ export default function Header({ menus }: Props) {
 				</div>
 			</div>
 		</header>
-	)
+	);
 }

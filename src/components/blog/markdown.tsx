@@ -1,47 +1,47 @@
-import { configs, type AvailableLanguages } from "@/stores/configs"
-import { useStore } from "@nanostores/react"
-import type { InferEntrySchema, RenderedContent } from "astro:content"
-import { useEffect, useState } from "react"
-import { ArrowUp } from "lucide-react"
+import { configs, type AvailableLanguages } from "@/stores/configs";
+import { useStore } from "@nanostores/react";
+import type { InferEntrySchema, RenderedContent } from "astro:content";
+import { useEffect, useState } from "react";
+import { ArrowUp } from "lucide-react";
 
 export interface Post {
-	id: string
-	body?: string
-	collection: "blog"
-	data: InferEntrySchema<"blog">
-	rendered?: RenderedContent
-	filePath?: string
+	id: string;
+	body?: string;
+	collection: "blog";
+	data: InferEntrySchema<"blog">;
+	rendered?: RenderedContent;
+	filePath?: string;
 }
 
 interface Props {
-	posts: Record<AvailableLanguages, Post>
-	className?: string
+	posts: Record<AvailableLanguages, Post>;
+	className?: string;
 }
 
 export default function Markdown({ posts, className }: Props) {
-	const $language = useStore(configs).language
-	const post = posts[$language]
+	const $language = useStore(configs).language;
+	const post = posts[$language];
 
-	const [backToTopVisible, setBackToTopVisibility] = useState(false)
+	const [backToTopVisible, setBackToTopVisibility] = useState(false);
 
 	if (!post || !post.rendered) {
-		return <div>Post don't exist</div>
+		return <div>Post don&apos;t exist</div>;
 	}
 
 	useEffect(() => {
 		const onScroll = () => {
-			setBackToTopVisibility(document.documentElement.scrollTop >= 840)
-		}
+			setBackToTopVisibility(document.documentElement.scrollTop >= 840);
+		};
 
-		window.addEventListener("scroll", onScroll)
+		window.addEventListener("scroll", onScroll);
 
 		return () => {
-			window.removeEventListener("scroll", onScroll)
-		}
-	}, [])
+			window.removeEventListener("scroll", onScroll);
+		};
+	}, []);
 
 	function backToTop() {
-		window.scrollTo(0, 0)
+		window.scrollTo(0, 0);
 	}
 
 	return (
@@ -64,5 +64,5 @@ export default function Markdown({ posts, className }: Props) {
 				""
 			)}
 		</div>
-	)
+	);
 }

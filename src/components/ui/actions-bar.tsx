@@ -1,35 +1,35 @@
-import { useReducer, type ReactNode } from "react"
-import Select, { type SelectOption } from "./select"
-import TextTranslator from "./text-translator"
+import { useReducer, type ReactNode } from "react";
+import Select, { type SelectOption } from "./select";
+import TextTranslator from "./text-translator";
 
 export interface ActionsBarFilter {
-	id: string
-	text: string
-	values: SelectOption[]
-	itemText?: "text" | "value"
-	multiple?: boolean
-	initialValue?: string
+	id: string;
+	text: string;
+	values: SelectOption[];
+	itemText?: "text" | "value";
+	multiple?: boolean;
+	initialValue?: string;
 }
 
 interface Props {
-	title?: ReactNode
-	filters: ActionsBarFilter[]
+	title?: ReactNode;
+	filters: ActionsBarFilter[];
 }
 
-type State = Record<string, string>
+type State = Record<string, string>;
 
 export default function ActionsBar({ title, filters }: Props) {
-	const initial = filters.reduce<Record<string, any>>(
+	const initial = filters.reduce<Record<string, string | null>>(
 		(acc, filter) => ({ ...acc, [filter.id]: filter.initialValue || null }),
 		{},
-	)
-	const [state, dispatch] = useReducer<State, any>(reducer, initial)
+	);
+	const [state, dispatch] = useReducer<State, any>(reducer, initial);
 
 	function reducer(state: State, { id, value }: any) {
 		return {
 			...state,
 			[id]: Array.isArray(value) ? value : value.value,
-		}
+		};
 	}
 
 	return (
@@ -49,5 +49,5 @@ export default function ActionsBar({ title, filters }: Props) {
 				))}
 			</div>
 		</div>
-	)
+	);
 }

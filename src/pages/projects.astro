@@ -1,16 +1,16 @@
 ---
-import BaseLayout from '@/layouts/base-layout.astro';
+import BaseLayout from "@/layouts/base-layout.astro";
 
-import ActionsBar, { type ActionsBarFilter } from '@/components/ui/actions-bar';
-import TextTranslator from '@/components/ui/text-translator';
-import type { SelectOption } from '@/components/ui/select';
-import List from '@/components/projects/list';
+import ActionsBar, { type ActionsBarFilter } from "@/components/ui/actions-bar";
+import TextTranslator from "@/components/ui/text-translator";
+import type { SelectOption } from "@/components/ui/select";
+import List from "@/components/projects/list";
 
-import { Octokit } from 'octokit';
+import { Octokit } from "octokit";
 
-import formatString from '@/helpers/format-string';
+import formatString from "@/helpers/format-string";
 
-interface Project {
+export interface Project {
 	name: string;
 	link: string;
 	description: string | null;
@@ -25,19 +25,19 @@ interface Project {
 
 const filters: ActionsBarFilter[] = [
 	{
-		id: 'order',
-		text: 'filters.order',
+		id: "order",
+		text: "filters.order",
 		values: [
-			{ text: 'filters.oldest', value: 'oldest' },
-			{ text: 'filters.newest', value: 'newest' },
+			{ text: "filters.oldest", value: "oldest" },
+			{ text: "filters.newest", value: "newest" },
 		],
 		multiple: false,
-		itemText: 'text',
-		initialValue: 'newest',
+		itemText: "text",
+		initialValue: "newest",
 	},
 	{
-		id: 'tags',
-		text: 'filters.tags',
+		id: "tags",
+		text: "filters.tags",
 		values: [],
 		multiple: true,
 	},
@@ -46,28 +46,28 @@ const filters: ActionsBarFilter[] = [
 let projects: Project[] = [];
 
 const octokit = new Octokit({
-	auth: import.meta.env.OCTOKIT_AUTH_TOKEN,
+	auth: import.meta.env.OCTOKIT_AUTH_TOKEN as string,
 });
 
 await octokit
-	.request('GET /users/{username}/repos', {
-		username: 'eujuliu',
+	.request("GET /users/{username}/repos", {
+		username: "eujuliu",
 		headers: {
-			'X-GitHub-Api-Version': '2022-11-28',
+			"X-GitHub-Api-Version": "2022-11-28",
 		},
-		sort: 'created',
-		direction: 'desc',
+		sort: "created",
+		direction: "desc",
 		per_page: 100,
 	})
 	.then((response) => {
 		projects = response.data
-			.filter((repo) => repo.topics?.includes('personal-project'))
+			.filter((repo) => repo.topics?.includes("personal-project"))
 			.reduce<Project[]>((repositories, repo) => {
 				const obj: Project = {
 					name: repo.name,
 					link: repo.html_url,
 					description: repo.description,
-					where: 'Github',
+					where: "Github",
 					language: repo.language,
 					tags: repo.topics,
 					stars: repo.stargazers_count || 0,
@@ -88,7 +88,7 @@ await octokit
 			].filter(
 				(item, index, self) =>
 					self.findIndex((i) => i.value === item.value) === index &&
-					!['personal-project'].includes(item.value)
+					!["personal-project"].includes(item.value)
 			);
 		}, []);
 	});

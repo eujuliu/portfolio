@@ -1,7 +1,7 @@
-import { defineCollection, z } from "astro:content"
+import { defineCollection, z } from "astro:content";
 
-import { glob } from "astro/loaders"
-import formatDate from "./helpers/format-date"
+import { glob } from "astro/loaders";
+import formatDate from "./helpers/format-date";
 
 const blog = defineCollection({
 	loader: glob({ pattern: "**/*.md", base: "./src/data/posts" }),
@@ -19,10 +19,10 @@ const blog = defineCollection({
 			language: z.enum(["en", "pt-br", "es"]),
 			tags: z.array(z.string()).min(1),
 		})
-		.superRefine((data, ctx) => {
-			data.created_at = formatDate(data.created_at, data.language)
-			data.updated_at = formatDate(data.updated_at, data.language)
+		.superRefine((data) => {
+			data.created_at = formatDate(data.created_at, data.language);
+			data.updated_at = formatDate(data.updated_at, data.language);
 		}),
-})
+});
 
-export const collections = { blog }
+export const collections = { blog };

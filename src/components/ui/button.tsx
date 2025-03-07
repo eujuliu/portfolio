@@ -1,9 +1,9 @@
-import type { ReactNode } from "react"
+import type { ReactNode } from "react";
 
 interface Props {
-	children?: ReactNode
-	onClick: () => any
-	style?: string
+	children?: ReactNode;
+	onClick: () => any;
+	style?: string;
 }
 
 export default function Button({ children, onClick, style }: Props) {
@@ -14,5 +14,5 @@ export default function Button({ children, onClick, style }: Props) {
 		>
 			{children}
 		</button>
-	)
+	);
 }

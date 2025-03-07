@@ -1,9 +1,9 @@
-import globals from "globals"
-import ts from "typescript-eslint"
-import react from "eslint-plugin-react"
-import astro from "eslint-plugin-astro"
-import a11y from "eslint-plugin-jsx-a11y"
-import prettier from "eslint-config-prettier"
+import globals from "globals";
+import ts from "typescript-eslint";
+import react from "eslint-plugin-react";
+import astro from "eslint-plugin-astro";
+import a11y from "eslint-plugin-jsx-a11y";
+import prettier from "eslint-config-prettier";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -30,7 +30,7 @@ export default [
 	},
 
 	// Astro Config
-	...astro.configs["flat/recommended"],
+	...astro.configs.recommended,
 
 	// Accessibility Config
 	{
@@ -62,4 +62,4 @@ export default [
 	},
 
 	prettier,
-]
+];

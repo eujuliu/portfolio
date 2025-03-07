@@ -1,9 +1,9 @@
-import { persistentAtom } from "@nanostores/persistent"
+import { persistentAtom } from "@nanostores/persistent";
 
-export type AvailableLanguages = "pt-br" | "en" | "es"
+export type AvailableLanguages = "pt-br" | "en" | "es";
 export interface Configs {
-	theme: "dark" | "light"
-	language: AvailableLanguages
+	theme: "dark" | "light";
+	language: AvailableLanguages;
 }
 
 export const configs = persistentAtom<Configs>(
@@ -13,13 +13,13 @@ export const configs = persistentAtom<Configs>(
 		encode: JSON.stringify,
 		decode: JSON.parse,
 	},
-)
+);
 
 configs.listen(({ language, theme }) => {
-	const html = document.querySelector("html")
+	const html = document.querySelector("html");
 
 	if (html) {
-		html.setAttribute("lang", language)
-		html.setAttribute("data-theme", theme)
+		html.setAttribute("lang", language);
+		html.setAttribute("data-theme", theme);
 	}
-})
+});

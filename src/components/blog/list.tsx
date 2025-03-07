@@ -1,13 +1,13 @@
-import { configs } from "@/stores/configs"
-import { useStore } from "@nanostores/react"
-import type { Post } from "./markdown"
+import { configs } from "@/stores/configs";
+import { useStore } from "@nanostores/react";
+import type { Post } from "./markdown";
 
 interface Props {
-	posts: Post[]
+	posts: Post[];
 }
 
 export default function List({ posts }: Props) {
-	const $language = useStore(configs).language
+	const $language = useStore(configs).language;
 
 	return (
 		<div className="grid gap-5 gap-y-6 lg:pb-14 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -42,5 +42,5 @@ export default function List({ posts }: Props) {
 					</div>
 				))}
 		</div>
-	)
+	);
 }

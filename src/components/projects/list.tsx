@@ -1,8 +1,10 @@
-import { Circle, GitFork, Github, Star } from "lucide-react"
-import Colors from "@/data/github-languages-colors.json"
+import { Circle, GitFork, Github, Star } from "lucide-react";
+import Colors from "@/data/github-languages-colors.json";
+import type { Project } from "@/pages/projects.astro";
 
+type Colors = Record<string, string>;
 interface Props {
-	projects: any[]
+	projects: Project[];
 }
 
 export default function List({ projects }: Props) {
@@ -10,12 +12,12 @@ export default function List({ projects }: Props) {
 		<div className="grid gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 			{projects.map(({ name, link, description, language, stars, forks }) => (
 				<div
-					key={name}
+					key={name as React.Key}
 					className="grid gap-2 grid-rows-3 border border-neutral-200 dark:border-neutral-700 rounded-lg p-4 w-full"
 				>
 					<div className="flex justify-between items-center font-bold">
 						<a
-							href={link}
+							href={link as string}
 							target="_blank"
 							className="text-lg text-blue-500 hover:underline underline-offset-2"
 							rel="noreferrer"
@@ -33,7 +35,7 @@ export default function List({ projects }: Props) {
 						{language ? (
 							<span className="flex items-center gap-1 font-bold text-sm">
 								<Circle
-									fill={(Colors as any)[language]}
+									fill={(Colors as Colors)[language as string]}
 									stroke="none"
 									size={15}
 								/>
@@ -64,5 +66,5 @@ export default function List({ projects }: Props) {
 				</div>
 			))}
 		</div>
-	)
+	);
 }
