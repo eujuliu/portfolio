@@ -1,28 +1,28 @@
-import { configs, type AvailableLanguages } from '@/stores/configs';
-import TextTranslator from '../ui/text-translator';
-import { useStore } from '@nanostores/react';
+import { configs, type AvailableLanguages } from "@/stores/configs"
+import TextTranslator from "../ui/text-translator"
+import { useStore } from "@nanostores/react"
 
 interface TOCHeader {
-	depth: number;
-	slug: string;
-	text: string;
+	depth: number
+	slug: string
+	text: string
 }
 
 interface RecursiveItem {
-	depth: number;
-	slug: string;
-	text: string;
-	children: RecursiveItem[];
+	depth: number
+	slug: string
+	text: string
+	children: RecursiveItem[]
 }
 
 interface TableOfContentsProps {
-	headings: Record<AvailableLanguages, TOCHeader[]>;
-	className?: string;
+	headings: Record<AvailableLanguages, TOCHeader[]>
+	className?: string
 }
 
 interface RecursiveListProps {
-	items: RecursiveItem[];
-	className?: string;
+	items: RecursiveItem[]
+	className?: string
 }
 
 function RecursiveList({ items, className }: RecursiveListProps) {
@@ -42,39 +42,39 @@ function RecursiveList({ items, className }: RecursiveListProps) {
 					{item.children.length > 0 ? (
 						<RecursiveList items={item.children} className="m-0" />
 					) : (
-						''
+						""
 					)}
 				</li>
 			))}
 		</ul>
-	);
+	)
 }
 
 export default function TableOfContents({
 	headings,
 	className,
 }: TableOfContentsProps) {
-	const $language = useStore(configs).language;
-	const headers = headings[$language];
+	const $language = useStore(configs).language
+	const headers = headings[$language]
 
 	const root: RecursiveItem = {
 		depth: 0,
-		slug: 'table-of-contents',
-		text: 'Table Of Contents',
+		slug: "table-of-contents",
+		text: "Table Of Contents",
 		children: [],
-	};
-	const stack: RecursiveItem[] = [root];
+	}
+	const stack: RecursiveItem[] = [root]
 
 	for (const item of headers) {
 		while (stack.length > 0 && stack[stack.length - 1].depth >= item.depth) {
-			stack.pop();
+			stack.pop()
 		}
 
-		const parent = stack[stack.length - 1];
-		const newItem: RecursiveItem = { ...item, children: [] };
+		const parent = stack[stack.length - 1]
+		const newItem: RecursiveItem = { ...item, children: [] }
 
-		parent.children.push(newItem);
-		stack.push(newItem);
+		parent.children.push(newItem)
+		stack.push(newItem)
 	}
 
 	return (
@@ -85,5 +85,5 @@ export default function TableOfContents({
 			/>
 			<RecursiveList items={root.children} />
 		</div>
-	);
+	)
 }

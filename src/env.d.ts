@@ -1,7 +1,7 @@
 interface importMetaEnv {
-	readonly OCTOKIT_AUTH_TOKEN: string;
+	readonly OCTOKIT_AUTH_TOKEN: string
 }
 
 interface ImportMeta {
-	readonly env: ImportMetaEnv;
+	readonly env: ImportMetaEnv
 }

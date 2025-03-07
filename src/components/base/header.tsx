@@ -1,55 +1,55 @@
-import { useEffect, useState } from 'react';
-import TextTranslator from '../ui/text-translator';
-import Select, { type SelectOption } from '../ui/select';
-import { useStore } from '@nanostores/react';
-import { configs, type AvailableLanguages } from '@/stores/configs';
-import Button from '../ui/button';
-import { Moon, SunDim, Menu, X } from 'lucide-react';
+import { useEffect, useState } from "react"
+import TextTranslator from "../ui/text-translator"
+import Select, { type SelectOption } from "../ui/select"
+import { useStore } from "@nanostores/react"
+import { configs, type AvailableLanguages } from "@/stores/configs"
+import Button from "../ui/button"
+import { Moon, SunDim, Menu, X } from "lucide-react"
 
 export interface MenuOptions {
-	name: string;
-	link: string;
-	tag?: string;
-	tagStyle?: string;
+	name: string
+	link: string
+	tag?: string
+	tagStyle?: string
 }
 
 interface Props {
-	menus: MenuOptions[];
+	menus: MenuOptions[]
 }
 
 const languages: SelectOption[] = [
 	{
-		value: 'pt-br',
-		text: 'languages.pt-br',
+		value: "pt-br",
+		text: "languages.pt-br",
 	},
 	{
-		value: 'en',
-		text: 'languages.en',
+		value: "en",
+		text: "languages.en",
 	},
 	{
-		value: 'es',
-		text: 'languages.es',
+		value: "es",
+		text: "languages.es",
 	},
-];
+]
 
 export default function Header({ menus }: Props) {
-	const [menuOpen, setMenuOpen] = useState(false);
-	const $configs = useStore(configs);
+	const [menuOpen, setMenuOpen] = useState(false)
+	const $configs = useStore(configs)
 
 	useEffect(() => {
-		const handleScreenResize = (event: Event) => {
-			const width = window.innerWidth;
-			if (width >= 1024 && menuOpen) setMenuOpen(false);
-		};
+		const handleScreenResize = () => {
+			const width = window.innerWidth
+			if (width >= 1024 && menuOpen) setMenuOpen(false)
+		}
 
-		window.addEventListener('resize', handleScreenResize);
+		window.addEventListener("resize", handleScreenResize)
 
-		return () => window.removeEventListener('resize', handleScreenResize);
-	});
+		return () => window.removeEventListener("resize", handleScreenResize)
+	})
 
 	function isActive(menu: MenuOptions) {
-		const regex = new RegExp(`^${menu.link}(?:/|$)`);
-		return regex.test(window.location.pathname);
+		const regex = new RegExp(`^${menu.link}(?:/|$)`)
+		return regex.test(window.location.pathname)
 	}
 
 	return (
@@ -66,7 +66,7 @@ export default function Header({ menus }: Props) {
 
 			<div
 				className={`flex flex-col w-0 lg:flex-row not-lg:justify-center lg:justify-between items-center not-lg:overflow-hidden gap-4 z-0 not-lg:fixed top-0 right-0  not-lg:h-dvh lg:w-full ${
-					menuOpen ? 'w-dvw' : ''
+					menuOpen ? "w-dvw" : ""
 				} not-lg:bg-neutral-100 not-lg:dark:bg-neutral-800 transition-all`}
 			>
 				<nav>
@@ -76,7 +76,7 @@ export default function Header({ menus }: Props) {
 								<a
 									href={menu.link}
 									className={`not-lg:text-5xl font-bold hover:text-blue-500 transition-colors delay-[5ms] ${
-										isActive(menu) ? 'text-blue-500' : ''
+										isActive(menu) ? "text-blue-500" : ""
 									}`}
 								>
 									<TextTranslator
@@ -89,7 +89,7 @@ export default function Header({ menus }: Props) {
 											{menu.tag}
 										</span>
 									) : (
-										''
+										""
 									)}
 								</a>
 							</li>
@@ -114,15 +114,15 @@ export default function Header({ menus }: Props) {
 						onClick={() =>
 							configs.set({
 								...$configs,
-								theme: $configs.theme === 'dark' ? 'light' : 'dark',
+								theme: $configs.theme === "dark" ? "light" : "dark",
 							})
 						}
 						style="border-0"
 					>
-						{$configs.theme === 'dark' ? <Moon /> : <SunDim />}
+						{$configs.theme === "dark" ? <Moon /> : <SunDim />}
 					</Button>
 				</div>
 			</div>
 		</header>
-	);
+	)
 }

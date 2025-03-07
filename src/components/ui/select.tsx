@@ -1,31 +1,31 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react';
-import { ChevronDown, Check } from 'lucide-react';
-import TextTranslator from './text-translator';
+import { useEffect, useRef, useState, type ReactNode } from "react"
+import { ChevronDown, Check } from "lucide-react"
+import TextTranslator from "./text-translator"
 
 export interface SelectOption {
-	text: string;
-	value: string;
+	text: string
+	value: string
 }
 
 interface Props {
-	val: string | SelectOption[];
-	onChange: (value: any) => any;
-	itemText?: 'text' | 'value';
-	placeholder: ReactNode;
-	options: SelectOption[];
-	multiple?: boolean;
+	val: string | SelectOption[]
+	onChange: (value: any) => any
+	itemText?: "text" | "value"
+	placeholder: ReactNode
+	options: SelectOption[]
+	multiple?: boolean
 }
 
 export default function Select({
 	val,
 	onChange,
-	itemText = 'value',
+	itemText = "value",
 	placeholder,
 	options,
 	multiple,
 }: Props) {
-	const [open, setOpen] = useState(false);
-	const dropdownRef = useRef<HTMLDivElement>(null);
+	const [open, setOpen] = useState(false)
+	const dropdownRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
 		const handlerClickOutSide = (event: MouseEvent) => {
@@ -33,17 +33,17 @@ export default function Select({
 				dropdownRef.current &&
 				!dropdownRef.current.contains(event.target as Node)
 			) {
-				setOpen(false);
+				setOpen(false)
 			}
-		};
+		}
 
-		document.addEventListener('click', handlerClickOutSide);
+		document.addEventListener("click", handlerClickOutSide)
 
-		return () => document.removeEventListener('click', handlerClickOutSide);
-	});
+		return () => document.removeEventListener("click", handlerClickOutSide)
+	})
 
 	function buttonPlaceholder() {
-		if (!val || val === '' || val?.length < 1) return placeholder;
+		if (!val || val === "" || val?.length < 1) return placeholder
 
 		if (Array.isArray(val))
 			return val.map((v) => (
@@ -52,38 +52,38 @@ export default function Select({
 					path={v.text}
 					className="after:content-[','] last:after:content-['']"
 				/>
-			));
+			))
 
-		const item = options.find((i) => i.value === val);
+		const item = options.find((i) => i.value === val)
 
-		if (!item) return val;
+		if (!item) return val
 
-		return <TextTranslator path={item[itemText]} />;
+		return <TextTranslator path={item[itemText]} />
 	}
 
 	function changeValue(option: SelectOption, isSelected: boolean = false) {
 		if (!multiple) {
-			setOpen(false);
-			onChange(option);
+			setOpen(false)
+			onChange(option)
 
-			return;
+			return
 		}
 
-		let values = [...new Set([...(val || []), option])];
+		let values = [...new Set([...(val || []), option])]
 
-		if (isSelected) values = values.filter((item) => item !== option);
+		if (isSelected) values = values.filter((item) => item !== option)
 
-		onChange(values);
+		onChange(values)
 	}
 
 	function isSelected(option: SelectOption) {
-		if (!val) return false;
+		if (!val) return false
 
-		if (typeof val === 'string') {
-			return val.toLowerCase() === option.value;
+		if (typeof val === "string") {
+			return val.toLowerCase() === option.value
 		}
 
-		return val.some((v) => v.value === option.value);
+		return val.some((v) => v.value === option.value)
 	}
 
 	return (
@@ -106,7 +106,7 @@ export default function Select({
 								key={opt.value}
 								onClick={() => changeValue(opt, isSelected(opt))}
 								className={`flex items-center gap-0.5 text-start px-2 py-1 hover:bg-neutral-500 hover:dark:bg-neutral-200 w-full transition-colors delay-[5ms] rounded ${
-									isSelected(opt) ? 'bg-neutral-500 dark:bg-neutral-200' : ''
+									isSelected(opt) ? "bg-neutral-500 dark:bg-neutral-200" : ""
 								}`}
 							>
 								<TextTranslator
@@ -120,7 +120,7 @@ export default function Select({
 											size={15}
 										/>
 									) : (
-										''
+										""
 									)}
 								</span>
 							</button>
@@ -132,8 +132,8 @@ export default function Select({
 					)}
 				</div>
 			) : (
-				''
+				""
 			)}
 		</div>
-	);
+	)
 }

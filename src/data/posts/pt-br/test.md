@@ -5,8 +5,8 @@ description: Este é um markdown para testar se todas as funcionalidades estão 
 image_url: https://images.pexels.com/photos/264905/pexels-photo-264905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
 alt: Uma imagem de um herói de desenho animado
 category: Markdown
-created_at: '2025-03-04'
-updated_at: '2025-03-04'
+created_at: "2025-03-04"
+updated_at: "2025-03-04"
 tags:
   - test
   - markdown
@@ -112,10 +112,10 @@ Syntax highlighting
 
 ```js
 var foo = function (bar) {
-	return bar++;
-};
+	return bar++
+}
 
-console.log(foo(5));
+console.log(foo(5))
 ```
 
 ## Tables
@@ -138,14 +138,14 @@ Right aligned columns
 
 [link text](http://dev.nodeca.com)
 
-[link with title](http://nodeca.github.io/pica/demo/ 'title text!')
+[link with title](http://nodeca.github.io/pica/demo/ "title text!")
 
 Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
 
 ## Images
 
 ![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg 'The Stormtroopocat')
+![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
 
 Like links, Images also have a footnote style syntax
 
@@ -153,7 +153,7 @@ Like links, Images also have a footnote style syntax
 
 With a reference later in the document defining the URL location:
 
-[id]: https://octodex.github.com/images/dojocat.jpg 'The Dojocat'
+[id]: https://octodex.github.com/images/dojocat.jpg "The Dojocat"
 
 ## Plugins
 

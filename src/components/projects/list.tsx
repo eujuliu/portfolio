@@ -1,8 +1,8 @@
-import { Circle, GitFork, Github, Star } from 'lucide-react';
-import Colors from '@/data/github-languages-colors.json';
+import { Circle, GitFork, Github, Star } from "lucide-react"
+import Colors from "@/data/github-languages-colors.json"
 
 interface Props {
-	projects: any[];
+	projects: any[]
 }
 
 export default function List({ projects }: Props) {
@@ -18,6 +18,7 @@ export default function List({ projects }: Props) {
 							href={link}
 							target="_blank"
 							className="text-lg text-blue-500 hover:underline underline-offset-2"
+							rel="noreferrer"
 						>
 							{name}
 						</a>
@@ -39,7 +40,7 @@ export default function List({ projects }: Props) {
 								{language}
 							</span>
 						) : (
-							''
+							""
 						)}
 
 						{stars ? (
@@ -48,7 +49,7 @@ export default function List({ projects }: Props) {
 								<span className="text-xs font-medium">{stars}</span>
 							</span>
 						) : (
-							''
+							""
 						)}
 
 						{forks ? (
@@ -57,11 +58,11 @@ export default function List({ projects }: Props) {
 								<span className="text-xs font-medium">{forks}</span>
 							</span>
 						) : (
-							''
+							""
 						)}
 					</div>
 				</div>
 			))}
 		</div>
-	);
+	)
 }
