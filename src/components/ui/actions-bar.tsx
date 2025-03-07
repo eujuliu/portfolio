@@ -19,12 +19,15 @@ interface Props {
 type State = Record<string, string>;
 
 export default function ActionsBar({ title, filters }: Props) {
-	const initial = filters.reduce<Record<string, string | null>>(
-		(acc, filter) => ({ ...acc, [filter.id]: filter.initialValue || null }),
-		{},
-	);
+	const initial = filters.reduce<Record<string, string>>((acc, filter) => {
+		acc[filter.id] = filter.initialValue || "";
+
+		return acc;
+	}, {});
+	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	const [state, dispatch] = useReducer<State, any>(reducer, initial);
 
+	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 	function reducer(state: State, { id, value }: any) {
 		return {
 			...state,

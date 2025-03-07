@@ -27,7 +27,7 @@ interface RecursiveListProps {
 
 function RecursiveList({ items, className }: RecursiveListProps) {
 	return (
-		<ul className={className ? className : `my-4 lg:my-3`}>
+		<ul className={className ? className : "my-4 lg:my-3"}>
 			{items.map((item) => (
 				<li
 					key={item.slug}

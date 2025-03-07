@@ -48,6 +48,7 @@ export default function Markdown({ posts, className }: Props) {
 		<div className="relative">
 			<div
 				className={className}
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
 				dangerouslySetInnerHTML={{
 					__html: post.rendered.html,
 				}}
@@ -55,6 +56,7 @@ export default function Markdown({ posts, className }: Props) {
 
 			{backToTopVisible ? (
 				<button
+					type="button"
 					className="fixed bottom-5 rounded-full border-2 p-1 right-5 bg-neutral-100 dark:bg-neutral-800 cursor-pointer"
 					onClick={backToTop}
 				>

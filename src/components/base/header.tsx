@@ -111,7 +111,6 @@ export default function Header({ menus }: Props) {
 						}
 					/>
 
-					<img src="" />
 					<Button
 						onClick={() =>
 							configs.set({

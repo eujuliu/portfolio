@@ -7,9 +7,9 @@
 		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
-		"lint": "biome lint --write src",
-		"check": "biome check --write src",
-		"format": "biome format --write src"
+		"lint": "biome lint --diagnostic-level=error --no-errors-on-unmatched src",
+		"lint:fix": "biome check --write --unsafe src",
+		"lint:staged": "biome check --error-on-warnings --no-errors-on-unmatched --staged src"
 	},
 	"engines": {
 		"node": "22.14.0"

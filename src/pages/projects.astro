@@ -76,16 +76,16 @@ await octokit
 					updated_at: repo.updated_at,
 				};
 
-				return [...repositories, obj];
+				repositories.push(obj);
+
+				return repositories;
 			}, []);
 
 		filters[1].values = projects.reduce<SelectOption[]>((acc, repo) => {
 			const tags = repo.tags || [];
+			acc.push(...tags.map((tag) => ({ text: formatString(tag), value: tag })));
 
-			return [
-				...acc,
-				...tags.map((tag) => ({ text: formatString(tag), value: tag })),
-			].filter(
+			return acc.filter(
 				(item, index, self) =>
 					self.findIndex((i) => i.value === item.value) === index &&
 					!["personal-project"].includes(item.value),

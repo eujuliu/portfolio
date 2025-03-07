@@ -1,4 +1,4 @@
-import Colors from "@/data/github-languages-colors.json";
+import GithubColors from "@/data/github-languages-colors.json";
 import type { Project } from "@/pages/projects.astro";
 import { Circle, GitFork, Github, Star } from "lucide-react";
 
@@ -35,7 +35,7 @@ export default function List({ projects }: Props) {
 						{language ? (
 							<span className="flex items-center gap-1 font-bold text-sm">
 								<Circle
-									fill={(Colors as Colors)[language as string]}
+									fill={(GithubColors as Colors)[language]}
 									stroke="none"
 									size={15}
 								/>

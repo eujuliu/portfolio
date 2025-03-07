@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import type { AvailableLanguages } from "@/stores/configs";
 
 import en from "./translations/en.json";
@@ -16,6 +13,7 @@ const translations = {
 export function useTranslation(lang: AvailableLanguages) {
 	return function t(key: string) {
 		return (
+			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 			key.split(".").reduce<any>((o, i) => o?.[i], translations[lang]) || key
 		);
 	};

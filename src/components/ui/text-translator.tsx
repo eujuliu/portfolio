@@ -3,7 +3,7 @@ import { type AvailableLanguages, configs } from "@/stores/configs";
 import { useStore } from "@nanostores/react";
 
 type Translation = {
-	[x in AvailableLanguages]: Record<string, any>;
+	[x in AvailableLanguages]: Record<string, unknown>;
 };
 interface Props {
 	path: string;
@@ -22,6 +22,7 @@ export default function TextTranslator({
 		: useTranslation($language);
 
 	return (
+		// biome-ignore lint/security/noDangerouslySetInnerHtml: It necessary for set the html that exists inside the strings
 		<span className={className} dangerouslySetInnerHTML={{ __html: t(path) }} />
 	);
 }

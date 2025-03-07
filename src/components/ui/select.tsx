@@ -9,7 +9,7 @@ export interface SelectOption {
 
 interface Props {
 	val: string | SelectOption[];
-	onChange: (value: any) => any;
+	onChange: (value: unknown) => unknown;
 	itemText?: "text" | "value";
 	placeholder: ReactNode;
 	options: SelectOption[];
@@ -61,7 +61,7 @@ export default function Select({
 		return <TextTranslator path={item[itemText]} />;
 	}
 
-	function changeValue(option: SelectOption, isSelected: boolean = false) {
+	function changeValue(option: SelectOption, isSelected = false) {
 		if (!multiple) {
 			setOpen(false);
 			onChange(option);
@@ -89,6 +89,7 @@ export default function Select({
 	return (
 		<div ref={dropdownRef} className="relative">
 			<button
+				type="button"
 				onClick={() => setOpen(!open)}
 				className="flex justify-center items-center gap-2 dark:text-white rounded-md p-2 cursor-pointer border-neutral-200 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors delay-[5ms]"
 			>
@@ -103,6 +104,7 @@ export default function Select({
 					{options.length > 0 ? (
 						options.map((opt) => (
 							<button
+								type="button"
 								key={opt.value}
 								onClick={() => changeValue(opt, isSelected(opt))}
 								className={`flex items-center gap-0.5 text-start px-2 py-1 hover:bg-neutral-500 hover:dark:bg-neutral-200 w-full transition-colors delay-[5ms] rounded ${
