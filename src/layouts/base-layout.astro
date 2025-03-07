@@ -1,67 +1,69 @@
 ---
-import '@/styles/global.css';
-import Header, { type MenuOptions } from '@/components/base/header';
-import TextTranslator from '@/components/ui/text-translator';
+import "@/styles/global.css"
+import Header, { type MenuOptions } from "@/components/base/header"
+import TextTranslator from "@/components/ui/text-translator"
+import Analytics from "@vercel/analytics/astro"
+import SpeedInsights from "@vercel/speed-insights/astro"
 
 interface Props {
-	classes?: string;
+	classes?: string
 }
 
 const menus: MenuOptions[] = [
 	{
-		name: 'Home',
-		link: '/',
+		name: "Home",
+		link: "/",
 	},
 	{
-		name: 'Projects',
-		link: '/projects',
+		name: "Projects",
+		link: "/projects",
 	},
 	{
-		name: 'Blog',
-		link: '/blog',
-		tag: 'new',
-		tagStyle: '!bg-blue-400',
+		name: "Blog",
+		link: "/blog",
+		tag: "new",
+		tagStyle: "!bg-blue-400",
 	},
-];
+]
 
-const { classes } = Astro.props;
+const { classes } = Astro.props
 ---
 
 <script is:inline>
 	function getLocalStorageConfig() {
-		let data = localStorage.getItem('jm:configs');
+		let data = localStorage.getItem("jm:configs")
 
 		if (!data) {
-			const isDarkTheme = window.matchMedia('(prefers-color-scheme: dark)');
-			const browserLanguage = window.navigator.language;
+			const isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)")
+			const browserLanguage = window.navigator.language
 
 			const availableLanguages = {
-				'en-US': 'en',
-				es: 'es',
-				'pt-BR': 'pt-br',
-			};
+				"en-US": "en",
+				es: "es",
+				"pt-BR": "pt-br",
+			}
 
 			const defaultConfig = {
-				theme: isDarkTheme ? 'dark' : 'light',
+				theme: isDarkTheme ? "dark" : "light",
 				language:
 					browserLanguage in availableLanguages
 						? availableLanguages[browserLanguage]
-						: 'en',
-			};
+						: "en",
+			}
 
-			localStorage.setItem('jm:configs', JSON.stringify(defaultConfig));
-			data = defaultConfig;
+			localStorage.setItem("jm:configs", JSON.stringify(defaultConfig))
+			data = defaultConfig
 		}
 
-		return typeof data === 'string' ? JSON.parse(data) : data;
+		return typeof data === "string" ? JSON.parse(data) : data
 	}
 
-	const config = getLocalStorageConfig();
-	const html = document.querySelector('html');
+	const config = getLocalStorageConfig()
+	const html = document.querySelector("html")
 
 	if (html) {
-		html.setAttribute('data-theme', config.theme);
-		html.setAttribute('lang', config.language);
+		html.setAttribute("data-theme", config.theme)
+		html.setAttribute("lang", config.language)
 	}
 </script>
 
@@ -86,6 +88,9 @@ const { classes } = Astro.props;
 				©{new Date().getFullYear()} Julio Martins.
 				<TextTranslator path="reservedRights" client:only="react" />.
 			</footer>
+
+			<Analytics />
+			<SpeedInsights />
 		</div>
 	</body>
 </html>

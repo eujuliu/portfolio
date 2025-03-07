@@ -20,6 +20,8 @@
 		"@tailwindcss/vite": "^4.0.9",
 		"@types/react": "^19.0.10",
 		"@types/react-dom": "^19.0.4",
+		"@vercel/analytics": "^1.5.0",
+		"@vercel/speed-insights": "^1.2.0",
 		"astro": "^5.4.0",
 		"lucide-react": "^0.476.0",
 		"nanostores": "^0.11.4",
@@ -41,5 +43,13 @@
 		"prettier": "3.5.3",
 		"typescript": "^5.7.3",
 		"typescript-eslint": "^8.26.0"
+	},
+	"pnpm": {
+		"ignoredBuiltDependencies": [
+			"@vercel/speed-insights"
+		],
+		"onlyBuiltDependencies": [
+			"@vercel/speed-insights"
+		]
 	}
 }
