@@ -3,9 +3,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-return */
 import type { AvailableLanguages } from "@/stores/configs";
 
-import ptBR from "./translations/pt-br.json";
 import en from "./translations/en.json";
 import es from "./translations/es.json";
+import ptBR from "./translations/pt-br.json";
 
 const translations = {
 	"pt-br": ptBR,

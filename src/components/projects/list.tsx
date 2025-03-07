@@ -1,6 +1,6 @@
-import { Circle, GitFork, Github, Star } from "lucide-react";
 import Colors from "@/data/github-languages-colors.json";
 import type { Project } from "@/pages/projects.astro";
+import { Circle, GitFork, Github, Star } from "lucide-react";
 
 type Colors = Record<string, string>;
 interface Props {

@@ -1,8 +1,8 @@
-import { configs, type AvailableLanguages } from "@/stores/configs";
-import { useStore } from "@nanostores/react";
 import type { InferEntrySchema, RenderedContent } from "astro:content";
-import { useEffect, useState } from "react";
+import { type AvailableLanguages, configs } from "@/stores/configs";
+import { useStore } from "@nanostores/react";
 import { ArrowUp } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export interface Post {
 	id: string;

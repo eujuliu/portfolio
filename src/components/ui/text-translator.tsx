@@ -1,6 +1,6 @@
-import { useStore } from "@nanostores/react";
-import { configs, type AvailableLanguages } from "@/stores/configs";
 import { useTranslation } from "@/i18n";
+import { type AvailableLanguages, configs } from "@/stores/configs";
+import { useStore } from "@nanostores/react";
 
 type Translation = {
 	[x in AvailableLanguages]: Record<string, any>;

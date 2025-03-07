@@ -1,10 +1,10 @@
 ---
 import BaseLayout from "@/layouts/base-layout.astro";
 
-import ActionsBar, { type ActionsBarFilter } from "@/components/ui/actions-bar";
-import TextTranslator from "@/components/ui/text-translator";
-import type { SelectOption } from "@/components/ui/select";
 import List from "@/components/projects/list";
+import ActionsBar, { type ActionsBarFilter } from "@/components/ui/actions-bar";
+import type { SelectOption } from "@/components/ui/select";
+import TextTranslator from "@/components/ui/text-translator";
 
 import { Octokit } from "octokit";
 
@@ -88,7 +88,7 @@ await octokit
 			].filter(
 				(item, index, self) =>
 					self.findIndex((i) => i.value === item.value) === index &&
-					!["personal-project"].includes(item.value)
+					!["personal-project"].includes(item.value),
 			);
 		}, []);
 	});

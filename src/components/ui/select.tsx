@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
-import { ChevronDown, Check } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
+import { type ReactNode, useEffect, useRef, useState } from "react";
 import TextTranslator from "./text-translator";
 
 export interface SelectOption {

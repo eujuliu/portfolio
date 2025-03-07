@@ -1,4 +1,4 @@
-import { configs, type AvailableLanguages } from "@/stores/configs";
+import { type AvailableLanguages, configs } from "@/stores/configs";
 import { useStore } from "@nanostores/react";
 
 export type ImageTranslation = {

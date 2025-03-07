@@ -1,27 +1,27 @@
 ---
-import List from '@/components/blog/list';
-import ActionsBar, { type ActionsBarFilter } from '@/components/ui/actions-bar';
-import TextTranslator from '@/components/ui/text-translator';
-import BaseLayout from '@/layouts/base-layout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
+import List from "@/components/blog/list";
+import ActionsBar, { type ActionsBarFilter } from "@/components/ui/actions-bar";
+import TextTranslator from "@/components/ui/text-translator";
+import BaseLayout from "@/layouts/base-layout.astro";
 
-const posts = await getCollection('blog');
+const posts = await getCollection("blog");
 
 const filters: ActionsBarFilter[] = [
 	{
-		id: 'order',
-		text: 'filters.order',
+		id: "order",
+		text: "filters.order",
 		values: [
-			{ text: 'filters.oldest', value: 'oldest' },
-			{ text: 'filters.newest', value: 'newest' },
+			{ text: "filters.oldest", value: "oldest" },
+			{ text: "filters.newest", value: "newest" },
 		],
 		multiple: false,
-		itemText: 'text',
-		initialValue: 'newest',
+		itemText: "text",
+		initialValue: "newest",
 	},
 	{
-		id: 'categories',
-		text: 'filters.categories',
+		id: "categories",
+		text: "filters.categories",
 		values: [],
 		multiple: true,
 	},

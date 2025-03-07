@@ -1,6 +1,6 @@
-import { configs, type AvailableLanguages } from "@/stores/configs";
-import TextTranslator from "../ui/text-translator";
+import { type AvailableLanguages, configs } from "@/stores/configs";
 import { useStore } from "@nanostores/react";
+import TextTranslator from "../ui/text-translator";
 
 interface TOCHeader {
 	depth: number;

@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import TextTranslator from "../ui/text-translator";
-import Select, { type SelectOption } from "../ui/select";
+import { type AvailableLanguages, configs } from "@/stores/configs";
 import { useStore } from "@nanostores/react";
-import { configs, type AvailableLanguages } from "@/stores/configs";
+import { Menu, Moon, SunDim, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import Button from "../ui/button";
-import { Moon, SunDim, Menu, X } from "lucide-react";
+import Select, { type SelectOption } from "../ui/select";
+import TextTranslator from "../ui/text-translator";
 
 export interface MenuOptions {
 	name: string;
@@ -111,6 +111,7 @@ export default function Header({ menus }: Props) {
 						}
 					/>
 
+					<img src="" />
 					<Button
 						onClick={() =>
 							configs.set({

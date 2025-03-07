@@ -1,56 +1,56 @@
 ---
-import type { GetStaticPaths } from "astro"
-import BaseLayout from "@/layouts/base-layout.astro"
-import { getCollection } from "astro:content"
-import TextTranslator from "@/components/ui/text-translator"
-import Image from "@/components/ui/image"
-import TableOfContents from "@/components/blog/table-of-contents"
-import Markdown, { type Post } from "@/components/blog/markdown"
-import type { AvailableLanguages } from "@/stores/configs"
-import returnNonReferenceObj from "@/helpers/return-non-reference-obj"
-import type { InferEntrySchema } from "astro:content"
+import { getCollection } from "astro:content";
+import type { InferEntrySchema } from "astro:content";
+import Markdown, { type Post } from "@/components/blog/markdown";
+import TableOfContents from "@/components/blog/table-of-contents";
+import Image from "@/components/ui/image";
+import TextTranslator from "@/components/ui/text-translator";
+import returnNonReferenceObj from "@/helpers/return-non-reference-obj";
+import BaseLayout from "@/layouts/base-layout.astro";
+import type { AvailableLanguages } from "@/stores/configs";
+import type { GetStaticPaths } from "astro";
 
 type Field = Record<
 	AvailableLanguages,
 	InferEntrySchema<"blog"> & { src: string }
->
-type Heading = Record<AvailableLanguages, unknown>
+>;
+type Heading = Record<AvailableLanguages, unknown>;
 interface Props {
-	posts: Record<AvailableLanguages, Post>
-	headings: Heading
-	fields: Field
+	posts: Record<AvailableLanguages, Post>;
+	headings: Heading;
+	fields: Field;
 }
 
 export const getStaticPaths = (async () => {
-	const posts = await getCollection("blog")
-	const translationObj = { en: {}, "pt-br": {}, es: {} }
+	const posts = await getCollection("blog");
+	const translationObj = { en: {}, "pt-br": {}, es: {} };
 	const data = posts.reduce<Record<string, Props>>((acc, post) => {
 		const obj = acc[post.data.link] || {
 			fields: returnNonReferenceObj(translationObj),
 			posts: returnNonReferenceObj(translationObj),
 			headings: returnNonReferenceObj(translationObj),
-		}
+		};
 
 		obj.fields[post.data.language] = {
 			...post.data,
 			src: post.data.image_url,
-		}
+		};
 
-		obj.posts[post.data.language] = post
-		obj.headings[post.data.language] = post.rendered?.metadata?.headings
+		obj.posts[post.data.language] = post;
+		obj.headings[post.data.language] = post.rendered?.metadata?.headings;
 
-		acc[post.data.link] = obj
+		acc[post.data.link] = obj;
 
-		return acc
-	}, {})
+		return acc;
+	}, {});
 
 	return Object.entries(data).map(([key, value]) => ({
 		params: { link: key },
 		props: { ...value },
-	}))
-}) satisfies GetStaticPaths
+	}));
+}) satisfies GetStaticPaths;
 
-const { fields, posts, headings } = Astro.props
+const { fields, posts, headings } = Astro.props;
 ---
 
 <BaseLayout>
