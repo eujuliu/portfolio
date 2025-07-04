@@ -36,20 +36,20 @@ The first step when setting up your server is finding a way to connect to it and
 The first step to using SSH is to install and enable it on your server.
 In my case, I’m using **Ubuntu**, which is a **Debian-based distribution**, so installing SSH is simple.
 
-1. Install the OpenSSH Server
+Install the OpenSSH Server
 
 ```bash
 sudo apt update
 sudo apt install openssh-server
 ```
 
-2. Enable and Start the SSH service
+Enable and Start the SSH service
 
 ```bash
 sudo systemctl enable --now ssh
 ```
 
-3. Verify if the service is running
+Verify if the service is running
 
 ```bash
 sudo systemctl status ssh

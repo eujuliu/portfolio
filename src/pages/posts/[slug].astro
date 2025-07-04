@@ -2,6 +2,8 @@
 import { getEntry, render, getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 
+import "../../styles/markdown.css";
+
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
 
@@ -19,7 +21,7 @@ if (!post) {
 const { Content } = await render(post);
 ---
 
-<Layout title={post.data.title}>
+<Layout title={post.data.title} description={post.data.description}>
   <div>Published At {post.data.publishedAt.toLocaleDateString()}</div>
   <main class="container prose">
     <Content />

@@ -1,8 +1,15 @@
 ---
 import Footer from "../components/Footer.astro";
 import { Nav } from "../components/Nav";
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
-const { title } = Astro.props;
+type Props = {
+  title: string;
+  description?: string;
+};
+
+const { title, description } = Astro.props;
 const currentPath = Astro.url.pathname;
 const items = [
   { label: "About", link: "/" },
@@ -10,17 +17,19 @@ const items = [
   { label: "Posts", link: "/posts" },
 ];
 
-console.log(currentPath);
+import "../styles/global.css";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content={description || "This is my portfolio together with my blog."}
+    />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
-    <link rel="stylesheet" href="/src/styles/markdown.css" />
     <title>Julio Martins</title>
   </head>
   <body>
@@ -29,6 +38,8 @@ console.log(currentPath);
       <Nav client:load items={items} active={currentPath} />
       <slot />
       <Footer />
+      <Analytics />
+      <SpeedInsights />
     </article>
   </body>
   <style is:global>
@@ -36,6 +47,7 @@ console.log(currentPath);
       display: flex;
       flex-direction: column;
       align-items: center;
+      padding: 0 1rem 0;
     }
 
     body article {
