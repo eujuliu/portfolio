@@ -29,6 +29,9 @@ import "../styles/global.css";
       content={description || "This is my portfolio together with my blog."}
     />
 
+    <Analytics />
+    <SpeedInsights />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Julio Martins</title>
   </head>
@@ -38,11 +41,8 @@ import "../styles/global.css";
       <Nav client:load items={items} active={currentPath} />
       <slot />
       <Footer />
-      <Analytics />
-      <SpeedInsights />
     </article>
-  </body>
-  <style is:global>
+  </body><style is:global>
     body {
       display: flex;
       flex-direction: column;
