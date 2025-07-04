@@ -1,16 +1,80 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Julio Martins">
+  <div>
+    <p>
+      I'm a passionate software engineer with a knack for solving complex
+      problems and delivering impactful results. With experience across frontend
+      and backend development, I thrive in creating seamless user experiences
+      and architecting scalable systems.
+    </p>
+    <p>
+      <strong>Frontend Development:</strong> Proficient in Vue.js, React.js, and
+      TypeScript, I've enhanced platform performance and security, delivering visually
+      engaging interfaces that drive client satisfaction.
+    </p>
+
+    <p>
+      <strong>Backend Expertise:</strong> Built robust APIs using Node.js, TypeScript,
+      and Prisma, optimizing processes and reducing deployment time by 50%. Focused
+      on scalable and secure solutions.
+    </p>
+
+    <p>
+      <strong>Cloud & DevOps:</strong> Experienced in streamlining deployments with
+      Docker, Terraform, and CI/CD pipelines, ensuring efficient operations and performance
+      optimization.
+    </p>
+
+    <p>
+      <strong>Leadership & Teamwork:</strong> I value collaboration and have successfully
+      led cross-functional projects, balancing technical excellence with timely delivery.
+    </p>
+
+    <p>
+      <strong>Continuous Learner:</strong> A self-taught programmer, I constantly
+      explore new technologies and refine my skills. From JavaScript to Python and
+      SQL, I'm always ready for the next challenge.
+    </p>
+
+    <p>
+      I'm motivated by opportunities to innovate, solve challenging problems,
+      and build systems that make a difference. Let’s connect and create
+      something great together!
+    </p>
+  </div>
+
+  <hr />
+
+  <div>
+    <p>Twitter <a href="https://twitter.com/thejuliu">@thejuliu</a></p>
+    <br />
+    <p>GitHub <a href="https://github.com/eujuliu">@eujuliu</a></p>
+    <br />
+    <p>
+      Linkedin <a href="https://www.linkedin.com/in/ojuliomartins/"
+        >@ojuliomartins</a
+      >
+    </p>
+    <br />
+    <p>Email contact.juliomartins@gmail.com</p>
+  </div>
+
+  <style>
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    hr {
+      margin: 3.2rem 0 3.2rem;
+    }
+
+    div:has(a) {
+      gap: 1rem;
+    }
+  </style>
+</Layout>

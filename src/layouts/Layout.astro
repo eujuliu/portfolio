@@ -1,0 +1,75 @@
+---
+import Footer from "../components/Footer.astro";
+import { Nav } from "../components/Nav";
+
+const { title } = Astro.props;
+const currentPath = Astro.url.pathname;
+const items = [
+  { label: "About", link: "/" },
+  { label: "Projects", link: "/projects" },
+  { label: "Posts", link: "/posts" },
+];
+
+console.log(currentPath);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <link rel="stylesheet" href="/src/styles/markdown.css" />
+    <title>Julio Martins</title>
+  </head>
+  <body>
+    <article>
+      <h1>{title}</h1>
+      <Nav client:load items={items} active={currentPath} />
+      <slot />
+      <Footer />
+    </article>
+  </body>
+  <style is:global>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    body article {
+      max-width: 65ch;
+      width: 100%;
+      padding-top: 8rem;
+      padding-bottom: 12.8rem;
+    }
+
+    body article h1 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      margin-bottom: 3.2rem;
+    }
+
+    body article nav {
+      margin-bottom: 3rem;
+    }
+
+    body article nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: end;
+      gap: 1rem;
+    }
+
+    body article nav ul li a {
+      color: var(--text);
+      text-decoration: underline;
+    }
+
+    body article nav ul li.active a {
+      text-decoration: none;
+      pointer-events: none;
+    }
+  </style>
+</html>

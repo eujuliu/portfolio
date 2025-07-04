@@ -1,0 +1,60 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const posts = await getCollection("posts");
+---
+
+<Layout title="Posts">
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <h3>
+            <a href={`/posts/${post.data.slug}`}>{post.data.title}</a>
+          </h3>
+          <p>
+            {post.data.description}
+            <a href={`/posts/${post.data.slug}`}>Read more -&gt; </a>{" "}
+          </p>
+          <div>
+            {post.data.tags.map((tag) => (
+              <span>#{tag}</span>
+            ))}
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+
+  <style>
+    ul {
+      list-style: none;
+    }
+
+    ul li:not(:last-of-type) {
+      margin-bottom: 2rem;
+    }
+
+    ul li h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+
+    ul li h3 a {
+      text-decoration: none;
+    }
+
+    ul li > p {
+      margin: 1rem 0 1rem;
+    }
+
+    ul li div span {
+      font-weight: 700;
+    }
+
+    ul li div span:not(:first-of-type) {
+      margin-left: 0.5rem;
+    }
+  </style>
+</Layout>
