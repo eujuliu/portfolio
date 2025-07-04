@@ -3,6 +3,7 @@ import { defineConfig, envField } from "astro/config";
 import remarkObsidian from "remark-obsidian";
 
 import react from "@astrojs/react";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,7 +18,9 @@ export default defineConfig({
       },
     },
   },
+
   integrations: [react()],
+
   env: {
     schema: {
       OCTOKIT_AUTH_TOKEN: envField.string({
@@ -26,4 +29,11 @@ export default defineConfig({
       }),
     },
   },
+
+  output: "server",
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
 });

@@ -28,12 +28,9 @@ import "../styles/global.css";
       name="description"
       content={description || "This is my portfolio together with my blog."}
     />
-
-    <Analytics />
-    <SpeedInsights />
-
+    <meta name="title" content={title} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Julio Martins</title>
+    <title>{title}</title>
   </head>
   <body>
     <article>
@@ -41,6 +38,9 @@ import "../styles/global.css";
       <Nav client:load items={items} active={currentPath} />
       <slot />
       <Footer />
+
+      <Analytics />
+      <SpeedInsights />
     </article>
   </body><style is:global>
     body {
