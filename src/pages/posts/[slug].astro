@@ -25,6 +25,23 @@ const { Content } = await render(post);
   <div>Published At {post.data.publishedAt.toLocaleDateString()}</div>
   <main class="container prose">
     <Content />
+
+    <div>
+      <hr />
+      <p>
+        If you found this guide helpful, please consider giving feedback or
+        suggesting improvements.
+      </p>
+      <p>
+        And if you spot something that can be done better, feel free to reach
+        out—I’m always looking to improve this tutorial.
+      </p>
+
+      <a
+        href={`https://github.com/eujuliu/portfolio/blob/main/posts/${post.id}.md`}
+        target="_blank">You can edit this post here</a
+      >
+    </div>
   </main>
 
   <style>
