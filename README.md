@@ -5,19 +5,19 @@
 A modern, developer-focused portfolio built with Astro and React. This project showcases my skills, projects, and technical writing, serving as both a personal website and a hub for my professional presence.
 
 <p align="center">
-  <a href="https://github.com/eujuliu/portifolio/issues">Have a question?</a>
+  <a href="https://github.com/eujuliu/portfolio/issues">Have a question?</a>
   ·
-  <a href="https://github.com/eujuliu/portifolio/fork">Request Feature</a>
+  <a href="https://github.com/eujuliu/portfolio/fork">Request Feature</a>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Astro-5.11.0-blueviolet" alt="Astro Version">
   <img src="https://img.shields.io/badge/React-19.1.0-61dafb" alt="React Version">
-  <img src="https://img.shields.io/github/last-commit/eujuliu/portifolio" alt="Last Update">
-  <img src="https://img.shields.io/github/issues/eujuliu/portifolio" alt="Issues">
-  <img src="https://img.shields.io/github/forks/eujuliu/portifolio" alt="Forks">
-  <img src="https://img.shields.io/github/stars/eujuliu/portifolio" alt="Stars">
-  <img src="https://img.shields.io/github/license/eujuliu/portifolio" alt="License">
+  <img src="https://img.shields.io/github/last-commit/eujuliu/portfolio" alt="Last Update">
+  <img src="https://img.shields.io/github/issues/eujuliu/portfolio" alt="Issues">
+  <img src="https://img.shields.io/github/forks/eujuliu/portfolio" alt="Forks">
+  <img src="https://img.shields.io/github/stars/eujuliu/portfolio" alt="Stars">
+  <img src="https://img.shields.io/github/license/eujuliu/portfolio" alt="License">
 </p>
 
 ## Table of Contents
@@ -29,8 +29,6 @@ A modern, developer-focused portfolio built with Astro and React. This project s
   - [Installation](#installation)
   - [Usage](#usage)
 - [Contributing](#contributing)
-- [Backlog](#backlog)
-- [Motivation](#motivation)
 - [Author](#author)
 
 ## About
@@ -44,7 +42,7 @@ This portfolio is designed to present my experience as a software engineer, high
 - [TypeScript](https://www.typescriptlang.org/) – Type safety across the codebase.
 - [Octokit](https://github.com/octokit/octokit.js) – Fetches project data from GitHub.
 - [Markdown](https://www.markdownguide.org/) – For blog posts and content.
-- [Remark Obsidian](https://github.com/obsidian-community/remark-obsidian) – Enhanced Markdown support.
+- [Remark Obsidian](https://github.com/johackim/remark-obsidian) – Enhanced Markdown support.
 
 ## Getting Started
 
@@ -61,8 +59,8 @@ To run this project locally, you’ll need:
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/eujuliu/portifolio.git
-cd portifolio
+git clone https://github.com/eujuliu/portfolio.git
+cd portfolio
 pnpm install
 # or
 npm install
