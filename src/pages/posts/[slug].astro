@@ -18,10 +18,15 @@ if (!post) {
   throw new Error(`Could not find blog post "${slug}"`);
 }
 
+const { host } = Astro.url;
 const { Content } = await render(post);
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={`${host}${post.data.image}`}
+>
   <div>Published At {post.data.publishedAt.toLocaleDateString()}</div>
   <main class="container prose">
     <Content />

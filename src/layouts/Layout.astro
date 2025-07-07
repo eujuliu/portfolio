@@ -4,31 +4,50 @@ import { Nav } from "../components/Nav";
 import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 
+import "../styles/global.css";
+
 type Props = {
   title: string;
   description?: string;
+  image?: string;
+  type?: string;
 };
 
-const { title, description } = Astro.props;
+const {
+  title,
+  description = "This is my portfolio together with my blog.",
+  image = "",
+  type = "website",
+} = Astro.props;
 const currentPath = Astro.url.pathname;
+const url = Astro.url.href;
 const items = [
   { label: "About", link: "/" },
   { label: "Projects", link: "/projects" },
   { label: "Posts", link: "/posts" },
 ];
-
-import "../styles/global.css";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content={description || "This is my portfolio together with my blog."}
-    />
-    <meta name="title" content={title} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={image} />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@thejuliu" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <meta property="title" content={title} />
+    <meta property="description" content={description} />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
