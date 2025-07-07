@@ -2,7 +2,7 @@
 slug: beginners-guide-to-setting-up-a-secure-server
 title: Beginner’s Guide to Setting Up a Secure Server
 description: This guide is a beginner-friendly server setup tutorial for anyone who wants to host a server on their local machine—whether it’s for a website, an API, or both.
-image: "/images/posts/beginners-guide-to-setting-up-a-secure-server.png"
+image: "https://i.imgur.com/sKCLcxY.png"
 tags:
   - server
   - beginner
@@ -633,7 +633,7 @@ sudo ufw allow https
 
 If successful, you should see the Nginx welcome page like this:
 
-![[Pasted image 20250701154721.png]]
+![The nginx default index, saying "Welcome to nginx!"](/images/posts/nginx-default.png)
 
 ### Nginx Configuration Files: `sites-available` vs `conf.d`
 
