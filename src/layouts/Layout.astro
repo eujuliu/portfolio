@@ -24,7 +24,7 @@ const url = Astro.url.href;
 const items = [
   { label: "About", link: "/" },
   { label: "Projects", link: "/projects" },
-  { label: "Posts", link: "/posts" },
+  { label: "Blog", link: "/posts" },
 ];
 ---
 
@@ -49,6 +49,12 @@ const items = [
     <meta property="description" content={description} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7580198059614119"
+      crossorigin="anonymous"></script>
+
     <title>{title}</title>
   </head>
   <body>
