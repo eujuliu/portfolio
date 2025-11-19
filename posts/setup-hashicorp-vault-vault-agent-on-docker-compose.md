@@ -2,7 +2,7 @@
 slug: setup-hashicorp-vault-vault-agent-on-docker-compose
 title: Setup Hashicorp Vault + Vault Agent on Docker Compose
 description: Here you will learn my configuration for a full docker compose hashicorp vault configuration
-image: ""
+image: "https://i.imgur.com/sKCLcxY.png"
 tags:
   - hashicorp
   - security
