@@ -7,7 +7,7 @@ tags:
   - java
   - tutorial
 
-publishedAt: 2025-05-12T04:34:51.706Z
+publishedAt: 2025-12-05T04:34:51.706Z
 ---
 
 Java is a popular and powerful programming language, created in 1995.
